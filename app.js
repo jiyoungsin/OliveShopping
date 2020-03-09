@@ -1,6 +1,7 @@
 const express= require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
+const mongoose = require('mongoose');
 
 
 //This loads all our environment variables from the keys.env
@@ -38,6 +39,9 @@ app.use("/",(req,res)=>{
     res.render("General/404");
 });
 
+mongoose.connect(process.env.MONGODB_PW, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(()=>{console.log(`Connected to MongoDB`);})
+.catch(err=>console.log(`Error: ${err}`));
 
 // Port is using the env key or 3000.
 const PORT = process.env.PORT;
