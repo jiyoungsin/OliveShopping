@@ -1,12 +1,19 @@
 const express = require('express')
 const router = express.Router();
-
+//const productModel = require("./model/product");
+const bestSellersModel = require("../model/bestSellers");
+const productCat = require("../model/productCategory");
 /*GENERAL ROUTES*/
 
 //Route to direct user to home page
 router.get("/",(req,res)=>
 {
-    res.render("General/index");
+    res.render("General/index",{
+        title: "Home",
+        pageHeader: "Home",
+        productCat : productCat.getAllProducts(),
+        productsBestSeller:bestSellersModel.getAllProducts(),
+    });
 });
 
 

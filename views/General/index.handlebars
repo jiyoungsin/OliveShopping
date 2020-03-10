@@ -1,5 +1,33 @@
-<h2>Home Page</h2>
-
-<p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit cumque quaerat a dolorem distinctio vero quae, sapiente animi mollitia totam labore unde cum accusantium. Earum quia sit aliquid cupiditate ratione!
-</p>
+<div class="container">
+    <span class="promoHeading">Product Category&emsp;&emsp;</span>
+    <div class="row">
+        {{#each productCat}}
+            <div class="col-4 col-sm-3 border cont-color">
+                <p class="homeTitle">{{this.title}}</p>
+                <a href="{{this.href}}"><img class="img-fluid" src="{{this.img}}" alt="First"></a>
+            </div>
+        {{/each}}
+    </div>
+    <span class="promoHeading">Best Sellers in Home&emsp;&emsp;</span>
+    <div class="row">
+    {{#each productsBestSeller}}
+        <div class="col-4 col-sm-3 border cont-color">
+            <a href="/"><img class="img-fluid" src="{{this.img}}" alt="First"></a>
+        </div>
+    {{/each}}
+    </div>
+    <span class="promoHeading">Valentines Day&emsp;&emsp;</span>
+    <div class="row">
+        <div class="border cont-color" style="display:flex;flex-direction:row;justify-content:end">
+            <a href="/"><img class="img-fluid" src="./images/choco.jpg" alt="First"></a>
+            <a href="/"><img class="img-fluid" src="./images/echo.jpg" alt="First"></a>
+            <a href="/"><img class="img-fluid" src="./images/neckless.jpg" alt="First"></a>
+            <a href="/"><img class="img-fluid" src="./images/earring.jpg" alt="First"></a>
+            <a href="/"><img class="img-fluid" src="./images/areo.jpg" alt="First"></a>
+            <a href="/"><img class="img-fluid" src="./images/handwarmer.jpg" alt="First"></a>
+            <a href="/"><img class="img-fluid" src="./images/banner.jpg" alt="First"></a>
+            <a href="/"><img class="img-fluid" src="./images/slipper.jpg" alt="First"></a>
+            <a href="/"><img class="img-fluid" src="./images/sweater.jpg" alt="First"></a>
+        </div>
+    </div>
+</div>

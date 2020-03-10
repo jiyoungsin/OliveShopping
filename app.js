@@ -1,8 +1,9 @@
 const express= require("express");
-const exphbs = require("express-handlebars");
-const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
-
+const bodyParser = require("body-parser");
+const exphbs = require("express-handlebars");
+const expressSession = require('express-session');
+const { check, validationResult } = require('express-validator');
 
 //This loads all our environment variables from the keys.env
 require("dotenv").config({path:'./config/keys.env'});
@@ -39,7 +40,7 @@ app.use("/",(req,res)=>{
     res.render("General/404");
 });
 
-mongoose.connect(process.env.SEND_GRID_KEY, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGODB_PW, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(()=>{console.log(`Connected to MongoDB`);})
 .catch(err=>console.log(`Error: ${err}`));
 
