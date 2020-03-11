@@ -5,6 +5,7 @@ const router = express.Router();
 // const productModel = require("./model/product");
 // const bestSellersModel = require("./model/bestSellers");
 // const productCat = require("./model/productCategory");
+router.use(express.static("public"));
 //Route to direct use to Add Task form
 router.get("/add",(req,res)=>
 {

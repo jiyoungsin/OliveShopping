@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator');
 // const productModel = require("./model/product");
 // const bestSellersModel = require("./model/bestSellers");
 // const productCat = require("./model/productCategory");
+router.use(express.static("public"));
 
 //Route to direct use to Registration form
 router.get("/registration",(req,res)=>
@@ -80,11 +81,10 @@ router.post("/login",[
 
 router.get("/logout",(req,res)=>{
     res.redirect("/User/login");
-s
 });
 
 //Route the user to their dashboard 
-router.get("/profile",(req,res)=>
+router.get("/dashboard",(req,res)=>
 {
     res.render("User/userDashboard");
 });

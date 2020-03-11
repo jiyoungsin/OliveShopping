@@ -44,7 +44,7 @@ mongoose.connect(process.env.MONGODB_PW, {useNewUrlParser: true, useUnifiedTopol
 
 // Port is using the env key or 3000.
 const PORT = process.env.PORT;
-//Creates an Express Web Server that listens for incomin HTTP Requests
+// The express server is live on PORT(3000) or deployed on heroku 
 app.listen(PORT,()=>{
     console.log(`Web Server online at ${PORT}`);
 });

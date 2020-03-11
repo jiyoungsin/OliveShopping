@@ -1,33 +1,36 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="bg-white col-md-7 lightBorder">
+        <div class="bg-white p-5 col-md-7 lightBorder">
             <div class="container">
+                <div class="row">
+                    <img class="col-sm-3 img-fluid"src="./images/logo.png" alt="My Logo">
+                    <h2 style="display:flex;align-items:flex-end">Create Account</h2>
+                </div>
                 <form class="container mt-3" method="POST" action="/registration">
-                    <legend>Create Account</legend>
                         <div class="row justify-content-between">
                             <div>
                                 <label for="fname"> First Name : </label>
-                                <input class="textSizing" type="text" name="fname" id="fname" placeholder=" First Name">
+                                <input class="border border-secondary" type="text" name="fname" id="fname" placeholder=" First Name">
                             </div>
                             <div>
                                 <label for="lname"> Last Name : </label>
-                                <input class="textSizing" type="text" name="lname" id="lname" placeholder=" Last Name">
+                                <input class="border border-secondary" type="text" name="lname" id="lname" placeholder=" Last Name">
                             </div>
                             <div>
                                 <label for="password"> Password &ensp;: </label>
-                                <input type="password" name="password" id="password" placeholder=" At least 6 characters">
+                                <input class="border border-secondary" type="password" name="password" id="password" placeholder=" At least 6 characters">
                             </div>
                             <div>
                                 <label for="PasswordAgain"> Password &ensp;: </label>
-                                <input type="password" name="PasswordAgain" id="PasswordAgain" placeholder=" At least 6 characters">
+                                <input class="border border-secondary" type="password" name="PasswordAgain" id="PasswordAgain" placeholder=" At least 6 characters">
                             </div>
                             <div>
                                 <label for="text"> Email &ensp;&emsp;&emsp;: </label>
-                                <input type="text" name="email" id="email" placeholder=" JohnDoe@gmail.com">
+                                <input class="border border-secondary" type="text" name="email" id="email" placeholder=" JohnDoe@gmail.com">
                             </div>
                             <div class="container m-3">
-                                <div class="row justify-content-center">
-                                    <i class="lightText">Passwords must consist of at least 6 characters.</i><br>
+                                <div class="row justify-content-center mb-3">
+                                    <i class="lightText">Passwords must consist of at least 6 characters.</i>
                                 </div>
                             </div>
                         </div>

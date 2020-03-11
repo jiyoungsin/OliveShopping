@@ -1,25 +1,28 @@
-<div class="containier">
+<div class="container">
     <div class="row justify-content-center">
-        <div class="bg-white col-md-6">
+        <div class="bg-white p-5 col-md-6">
             <div class="container center">
-                <div><img src="./images/logo.png" alt="My Logo"></div>
+                <div class="row">
+                    <img class="col-sm-3 img-fluid"src="./images/logo.png" alt="My Logo">
+                    <h2 style="display:flex;align-items:flex-end">Sign-In</h2>
+                </div>
                 <form method="POST" action="/login">
-                    <legend class="heading">Sign-In</legend>
                     <label for="text">E-mail Address</label><br>
-                    <input class="textSizing" type="text" name="email" id="email" placeholder="JohnDoe@gmail.com"><br>
+                    <input class="border border-secondary mb-3" type="text" name="email" id="email" placeholder=" JohnDoe@gmail.com"><br>
                     <label for="password">Password</label><br>
-                    <input class="textSizing" type="password" name="password" id="password" placeholder="At least 6 characters"><br>
-                    <i class="lightText">Passwords must consist of at least 6 characters.</i>
-                    &nbsp;&nbsp;<a href="/">Need Help?</a><br>
+                    <input class="border border-secondary mb-3" type="password" name="password" id="password" placeholder=" At least 6 characters"><br>
+                    <div class="mb-4">
+                        <i class="lightText">Passwords must consist of atleast 6 characters.</i>
+                    </div>
                     {{#each errors}}
                         <p style="color:red;">{{msg}}</p>
                     {{/each}}
                     <button type="submit" class="btn btn-success" value="Login">Login</button>
                     <hr>
                 </form>
-                <br>New to Olive Shopping?<br>
                 <div>
-                    <a href="/user/registration"><button type="submit" class="btn btn-warning" value="Create Your Account">Create Your Account</button></a>
+                     New to Olive Shopping?
+                    <a href="/user/registration">Create Your Account</a>
                     <div style="text-align: justify; text-justify: inter-word;">By creating an account, you agree to OliveShoppings's <a>Conditions of Use</a> and <a>Privacy Notice</a></div>
                 </div>
             </div>

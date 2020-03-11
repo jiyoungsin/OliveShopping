@@ -3,6 +3,8 @@ const router = express.Router();
 //const productModel = require("./model/product");
 const bestSellersModel = require("../model/bestSellers");
 const productCat = require("../model/productCategory");
+router.use(express.static("public"));
+
 /*GENERAL ROUTES*/
 
 //Route to direct user to home page
