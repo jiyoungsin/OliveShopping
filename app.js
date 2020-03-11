@@ -29,16 +29,14 @@ app.set("view engine","handlebars");
 
 
 //MAPs EXPRESS TO ALL OUR  ROUTER OBJECTS
-// mapping the generalRoutes route.
-app.use("/",generalRoutes);
-// mapping the userRoutes route.
-app.use("/user",userRoutes);
-// mapping the taskRoutes route
-app.use("/task",taskRoutes);
-// Mapping an error page route as a catch case.
+
+app.use("/",generalRoutes);  // mapping the generalRoutes route.
+app.use("/user",userRoutes); // mapping the userRoutes route.
+app.use("/task",taskRoutes); // mapping the taskRoutes route
+
 app.use("/",(req,res)=>{
     res.render("General/404");
-});
+}); // Mapping an error page route as a catch case.
 
 mongoose.connect(process.env.MONGODB_PW, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(()=>{console.log(`Connected to MongoDB`);})

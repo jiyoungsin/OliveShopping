@@ -1,30 +1,49 @@
-<div class="view">
-    <div class="bg-white container col-sm-4 col-5 lightBorder">
-        <div class="container center">
-            <div><img src="./images/smallerLogo.png" alt="My Logo"></div>
-            <form method="POST" action="/registration">
-                <legend class="heading">Create Account</legend>
-                <label for="fname">Your First Name</label><br>
-                <input class="textSizing" type="text" name="fname" id="fname" placeholder="First Name"><br>
-                <label for="lname">Your Last Name</label><br>
-                <input class="textSizing" type="text" name="lname" id="lname" placeholder="Last Name"><br>
-                <label for="text">Email</label><br>
-                <input class="textSizing" type="text" name="email" id="email" placeholder="JohnDoe@gmail.com"><br>
-                <label for="password">Password</label><br>
-                <input class="textSizing" type="password" name="password" id="password" placeholder="At least 6 characters">
-                <br><i class="lightText">Passwords must consist of at least 6 characters.</i><br>
-                <label for="PasswordAgain">Password Again</label><br>
-                <input class="textSizing" type="password" name="PasswordAgain" id="PasswordAgain" placeholder="At least 6 characters"><br>
-                <label for="messageText">Message</label><br>
-                <input class="textSizing" type="text" name="messageText" id="messageText"><br>
-                {{#each errors}}
-                    <p style="color:red;">{{msg}}</p>
-                {{/each}}
-                <input type="submit" class="button" value="Create your account">
-                <br><hr>
-                <div>By creating an account, you agree to OliveShoppings's <a>Conditions of Use</a> and <a>Privacy Notice</a></div>
-                <div>Already have an account? <a href="./login">Sign in</a></div>
-            </form>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="bg-white col-md-7 lightBorder">
+            <div class="container">
+                <form class="container mt-3" method="POST" action="/registration">
+                    <legend>Create Account</legend>
+                        <div class="row justify-content-between">
+                            <div>
+                                <label for="fname"> First Name : </label>
+                                <input class="textSizing" type="text" name="fname" id="fname" placeholder=" First Name">
+                            </div>
+                            <div>
+                                <label for="lname"> Last Name : </label>
+                                <input class="textSizing" type="text" name="lname" id="lname" placeholder=" Last Name">
+                            </div>
+                            <div>
+                                <label for="password"> Password &ensp;: </label>
+                                <input type="password" name="password" id="password" placeholder=" At least 6 characters">
+                            </div>
+                            <div>
+                                <label for="PasswordAgain"> Password &ensp;: </label>
+                                <input type="password" name="PasswordAgain" id="PasswordAgain" placeholder=" At least 6 characters">
+                            </div>
+                            <div>
+                                <label for="text"> Email &ensp;&emsp;&emsp;: </label>
+                                <input type="text" name="email" id="email" placeholder=" JohnDoe@gmail.com">
+                            </div>
+                            <div class="container m-3">
+                                <div class="row justify-content-center">
+                                    <i class="lightText">Passwords must consist of at least 6 characters.</i><br>
+                                </div>
+                            </div>
+                        </div>
+                    {{#each errors}}
+                        <p style="color:red;">{{msg}}</p>
+                    {{/each}}
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <button type="submit" class="btn btn-success" value="Create your account">Create your account</button>
+                        </div>
+                    </div>
+                    <br><hr>
+                    By creating an account, you agree to OliveShoppings's <a>Conditions of Use</a> and <a>Privacy Notice</a>
+                    <div class="mb-5">Already have an account? <a href="./login">Sign in</a></div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

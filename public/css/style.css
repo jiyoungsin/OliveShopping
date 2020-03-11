@@ -66,3 +66,43 @@ input[class="delButtons"]
 {
     max-width: 50%;
 }
+
+.title-box{
+    background: orange;
+    color: #fff;
+    width: 180px;
+    padding: 4px 10px;
+    height: 40px;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.title-box h2{
+    font-size: 24px;
+}
+.title-box::after{
+    content: '';
+    border-top: 40px solid orange;
+    border-right: 50px solid transparent;
+    position: abolsute;
+    display: flex;
+    margin-top: -4px;
+    margin-left: 87px;
+}
+
+.featured-row{
+    margin: 45px 0;
+}
+.featured-row img{
+    width:100%; 
+    padding: 15px 0; 
+    transition: 1s; 
+    cursor: pointer;
+}
+.featured-row img:hover{
+    transform: scale(1.1);
+}
+
+body{
+    background-color:#222629
+}

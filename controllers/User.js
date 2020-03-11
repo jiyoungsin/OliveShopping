@@ -7,7 +7,7 @@ const { check, validationResult } = require('express-validator');
 // const productCat = require("./model/productCategory");
 
 //Route to direct use to Registration form
-router.get("/register",(req,res)=>
+router.get("/registration",(req,res)=>
 {
     //res.render("User/register");
     res.render("User/registration",{
@@ -17,7 +17,7 @@ router.get("/register",(req,res)=>
 });
 
 //Route to process user's request and data when user submits registration form
-router.post("/register",[
+router.post("/registration",[
     check('fname','First Name Can Not Be NULL').isLength({ min:1}),
     check('fname').exists(),
     check('lname','Last Name Can Not Be NULL').isLength({ min:1}),
@@ -59,7 +59,6 @@ router.post("/register",[
 //Route to direct user to the login form
 router.get("/login",(req,res)=>
 {
-    //res.render("User/login");
     res.render("User/login",{
         title: "Login",
         pageHeader: "Login",
@@ -73,17 +72,15 @@ router.post("/login",[
   ],(req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.render("User/login",{ errors: errors.array() });
+        return res.render("/User/login",{ errors: errors.array() });
     }
     return res.render("/");
 });
 
 
 router.get("/logout",(req,res)=>{
-
-
     res.redirect("/User/login");
-
+s
 });
 
 //Route the user to their dashboard 
