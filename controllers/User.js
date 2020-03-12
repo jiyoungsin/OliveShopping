@@ -29,45 +29,8 @@ router.get("/registration",(req,res)=>
         pageHeader: " ",
     });
 });
-
-//Route to process user's request and data when user submits registration form
-// router.post("/registration",[
-//     check('fname','First Name Can Not Be NULL').isLength({ min:1}),
-//     check('fname').exists(),
-//     check('lname','Last Name Can Not Be NULL').isLength({ min:1}),
-//     check('lname').exists(),
-//     check('email','Invaild Email').isEmail(),
-//     check('email').exists(),
-//     check('email','Email is Null').isLength({ min:1}),
-//     check('password','Password must be at least 5 chars long').isLength({ min:5})
-//     .matches(/\d/).withMessage('Password must contain a number')
-//   ],(req, res) => {
-//     errors = validationResult(req);
-//     if (!errors.isEmpty()) {
-//         return res.render("User/registration",{ errors: errors.array() });
-//     }
-//     const {fname,lname, email, messageText} = req.body;
-//     const sgMail = require('@sendgrid/mail');
-//     sgMail.setApiKey(`${process.env.SG_KEY_EMAIL}`);
-//     const msg = {
-//         to: `jiyoungsin97@gmail.com`,
-//         from: `${email}`,
-//         subject: `Contact-Us Email`,
-//         html:
-//         `
-//         Vistor's Full Name: ${fname} ${lname}
-//         Vistor's Email Address: ${fname}
-//         Vistor's message: ${messageText}
-//         `,
-//     }
-//     sgMail.send(msg)
-//     .then(()=>{
-//         res.redirect("/");
-//     })
-//     .catch(err=>{
-//         console.log(`Error ${err}`);
-//     });
-// });
+// registration page with validation...
+// if valid user input we create an account.
 router.post('/registration',[
         check('fname','First Name Can Not Be NULL').isLength({ min:1}),
         check('fname').exists(),
