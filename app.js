@@ -3,7 +3,6 @@ const express= require("express");
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
 //const expressSession = require('express-session');
-//const { check, validationResult } = require('express-validator');
 
 //This loads all our environment variables from the keys.env
 require("dotenv").config({path:'./config/keys.env'});
