@@ -1,9 +1,9 @@
 const express= require("express");
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
-const expressSession = require('express-session');
-const { check, validationResult } = require('express-validator');
+//const expressSession = require('express-session');
+//const { check, validationResult } = require('express-validator');
 
 //This loads all our environment variables from the keys.env
 require("dotenv").config({path:'./config/keys.env'});
@@ -38,9 +38,9 @@ app.use("/",(req,res)=>{
     res.render("General/404");
 }); // Mapping an error page route as a catch case.
 
-mongoose.connect(process.env.MONGODB_PW, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(()=>{console.log(`Connected to MongoDB`);})
-.catch(err=>console.log(`Error: ${err}`));
+// mongoose.connect(process.env.URI, {useNewUrlParser: true, useUnifiedTopology: true})
+// .then(()=>{console.log(`Connected to MongoDB`);})
+// .catch(err=>console.log(`Error: ${err}`));
 
 // Port is using the env key or 3000.
 const PORT = process.env.PORT;

@@ -8,15 +8,23 @@ autoIncrement.initialize(connect);
 const UserSchema = new Schema({
     _id:{
         type: Number,
-        required: true
+        required: true,
+    },
+    FirstName:{
+        type: String,
+        required:true,
+    },
+    LastName:{
+        type: String,
+        required:true,
     },
     Email:{
         type: String,
-        required:true
+        required:true,
     },
     Psw:{
         type:String,
-        required:true
+        required:true,
     },
     Date:  {
         type: Date,
