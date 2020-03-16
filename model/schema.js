@@ -22,8 +22,16 @@ const UserSchema = new Schema({
         type: String,
         required:true,
     },
+    Username:{
+        type: String,
+        required:true,
+    },
     Psw:{
         type:String,
+        required:true,
+    },
+    Gender:{
+        type: String,
         required:true,
     },
     Date:  {

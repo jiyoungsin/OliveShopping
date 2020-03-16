@@ -2,31 +2,46 @@
     <div class="row justify-content-center">
         <div class="bg-white p-5 col-md-7 lightBorder">
             <div class="container">
-                <div class="row">
-                    <img class="col-sm-3 img-fluid"src="./images/logo.png" alt="My Logo">
-                    <h2 style="display:flex;align-items:flex-end">Create Account</h2>
+                <div class="row mb-3">
+                    <div class="col-3"><img class="img-fluid"src="./images/logo.png" alt="My Logo"></div>
+                    <div class="col-9 d-flex align-items-end"><h2>Sign Up</h2></div>
                 </div>
                 <form class="container mt-3" method="POST" action="/User/registration">
-                        <div class="row justify-content-between">
-                            <div>
-                                <label for="fname"> First Name : </label>
-                                <input class="border border-secondary" type="text" name="fname" id="fname" placeholder=" First Name">
+                        <div class="justify-content-between">
+                            <div class="row">
+                                <div class="col-md-6"><label for="fname">First Name:</label></div>
+                                <div class="col-md-6"><input class="border border-secondary" type="text" name="fname" id="fname" placeholder=" First Name"></div>
                             </div>
-                            <div>
-                                <label for="lname"> Last Name : </label>
-                                <input class="border border-secondary" type="text" name="lname" id="lname" placeholder=" Last Name">
+                            <div class="row">
+                                <div class="col-md-6"><label for="lname">Last Name:</label></div>
+                                <div class="col-md-6"><input class="border border-secondary" type="text" name="lname" id="lname" placeholder=" Last Name"></div>
                             </div>
-                            <div>
-                                <label for="password"> Password &ensp;: </label>
-                                <input class="border border-secondary" type="password" name="password" id="password" placeholder=" At least 6 characters">
+                            <div class="row">
+                                <div class="col-md-6"><label for="email">Email:</label></div>
+                                <div class="col-md-6"><input class="border border-secondary" type="text" name="email" id="email" placeholder=" JohnDoe@gmail.com"></div>
                             </div>
-                            <div>
-                                <label for="PasswordAgain"> Password &ensp;: </label>
-                                <input class="border border-secondary" type="password" name="PasswordAgain" id="PasswordAgain" placeholder=" At least 6 characters">
+                            <div class="row">
+                                <div class="col-md-6"><label for="userName">Username:</label></div>
+                                <div class="col-md-6"><input class="border border-secondary" type="text" name="userName" id="userName" placeholder=" Username"></div>
                             </div>
-                            <div>
-                                <label for="text"> Email &ensp;&emsp;&emsp;: </label>
-                                <input class="border border-secondary" type="text" name="email" id="email" placeholder=" JohnDoe@gmail.com">
+                            <div class="row">
+                                <div class="col-md-6"><label for="password">Password:</label></div>
+                                <div class="col-md-6"><input class="border border-secondary" type="password" name="password" id="password" placeholder=" At least 6 characters"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"><label for="PasswordAgain">Confirm Password:</label></div>
+                                <div class="col-md-6"><input class="border border-secondary" type="password" name="PasswordAgain" id="PasswordAgain" placeholder=" At least 6 characters"></div>
+                            </div>
+                            <div class="row justify-content-between">
+                                <div class="col-md-5"><label for="gen">Gender:</label></div>
+                                <div class="col-md-7">
+                                    <input type="radio" id="male" name="gender" value="male">
+                                    <label for="male"> Male</label>
+                                    <input type="radio" id="female" name="gender" value="female">
+                                    <label for="female"> Female</label>
+                                    <input type="radio" id="other" name="gender" value="other">
+                                    <label for="other"> Other</label>
+                                </div>  
                             </div>
                             <div class="container m-3">
                                 <div class="row justify-content-center mb-3">

@@ -104,5 +104,9 @@ input[class="delButtons"]
 }
 
 body{
-    background-color:#222629
+    background-color:#232b2b;
+}
+
+.navbar-toggler{
+    background-color: white;
 }

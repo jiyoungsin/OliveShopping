@@ -4,9 +4,9 @@
             <div class="container center">
                 <div class="row mb-3">
                     <div class="col-3"><img class="img-fluid"src="./images/logo.png" alt="My Logo"></div>
-                    <div class="col-9 d-flex align-items-end"><h2>Login</h2></div>
+                    <div class="col-9 d-flex align-items-end"><h4>Employee Login</h4></div>
                 </div>
-                <form method="POST" action="/User/login">
+                <form method="POST" action="/login">
                     <div class="row">
                         <div class="col-md-5"><label for="userName">Username:</label></div>
                         <div class="col-md-7"><input class="border border-secondary" type="text" name="userName" id="userName" placeholder=" Username"></div>
@@ -18,7 +18,7 @@
                     {{#each errors}}
                         <p style="color:red;">{{msg}}</p>
                     {{/each}}
-                    <div class="container col-md-12  mt-3">
+                    <div class="container col-md-12 mt-3">
                         <div class="row justify-content-end">
                             <button type="submit" class="btn btn-success" value="Sign-In"> Sign In </button>
                         </div>
