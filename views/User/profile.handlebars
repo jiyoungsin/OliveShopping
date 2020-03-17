@@ -1,43 +1,45 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bg-light">
-                <div class="container d-flex justify-content-center">
-                    <img class="img-fluid" src="https://picsum.photos/200" alt="Display picture">
-                </div>
-                <form method="POST" action="User/profile">
-                    <label for="img">Select image:</label>
-                    <input type="file" id="img" name="img" accept="image/*">
-                    <div class="container col-md-12 mt-3">
-                        <div class="row justify-content-end">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                </form>
-                {{!-- Update Profile image POST METHOD.
-                Make a new route jjust to update a profile picture. --}}
-            </div>
+<div class="container row bg-light">
+    <div class="container col-md-3 border border-light mb-5">
+        <div class="mt-5 container d-flex justify-content-center">
+            <img class="img-fluid rounded-circle" src="https://picsum.photos/200" alt="Display picture">
         </div>
-        <div class="col-md-9 bg-light">
+        <form method="POST" action="/">
+            <label for="img">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*">
+            <div class="container col-md-12 mt-3 mb-3">
+                <div class="row justify-content-end">
+                    <button type="submit" class="btn btn-primary">Upload Picture</button>
+                </div>
+            </div>
+        </form>
+        {{!-- Update Profile image POST METHOD.
+        Make a new route jjust to update a profile picture. --}}
+    </div>
+    <div class="container col-md-6 pb-5  pt-1">
+        <div>
             <div class="container mt-5">
-                <h2>Update Profile</h2>
-                <form class="container mt-3" method="POST" action="/User/registration">
-                    <div class="justify-content-between">
+                <h2>Profile</h2>
+                <form class="container mt-3" method="POST" action="/">
+                    <div class="justify-content-center">
                         <div class="row">
                             <div class="col-md-6"><label for="fname">First Name:</label></div>
                             <div class="col-md-6"><input class="border border-secondary" type="text" name="fname" id="fname" placeholder=" First Name"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-6"><label for="lname">Last Name:</label></div>
-                            <div class="col-md-6"><input class="bder border-secondary" type="text" name="lname" id="lname" placeholder=" Last Name"></div>
+                            <div class="col-md-6"><input class="border border-secondary" type="text" name="lname" id="lname" placeholder=" Last Name"></div>
+                        </div>
+                         <div class="row">
+                            <div class="col-md-6"><label for="email">Email:</label></div>
+                            <div class="col-md-6"><input class="border border-secondary" type="text" name="email" id="email" placeholder=" JohnDoe@gmail.com"></div>
                         </div>
                     </div>
                     {{#each errors}}
                         <p style="color:red;">{{msg}}</p>
                     {{/each}}
                     <div class="container col-md-12 mt-3">
-                        <div class="row justify-content-end">
-                            <button type="submit" class="btn btn-success" value="Sign-In"> Sign In </button>
+                        <div class="row justify-content-center">
+                            <button type="submit" class="btn btn-success" value="Sign-In"> Update Profile </button>
                         </div>
                     </div>
                 </form> 
@@ -45,5 +47,8 @@
                 Make a new route just to update the profile info. --}}
             </div>
         </div>
+    </div>
+    <div class="container mt-5 mb-5 col-md-3 d-flex justify-content-center">
+        <img class="img-fluid" src="images/cocacola.jpg" alt="ads">
     </div>
 </div>

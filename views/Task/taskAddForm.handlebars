@@ -1,17 +1,37 @@
-    <h2>Add Task</h2>
-    
-    <form method="POST" action="/task/add">
-
-        <label>Title</label>
-        <input type="text" name="title" id="title"> <br><br>
-
-        <label>Description</label>
-        <textarea id="description" name="description"></textarea><br><br>
-
-        <label>Reminder Date</label>
-        <input type="date" name="reminderDate" id="reminderDate"> <br><br>
-
-        <input type="submit" value="Add Task">
-
-    </form>
+<div class="container d-flex justify-content-center">
+    <div class="col-md-6 p-5 bg-light">
+        <h2>Add Task</h2>
+        <form method="POST" action="/task/add">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="title">Title:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="border border-secondary" type="text" name="title" id="title" placeholder=" Title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="desc">Description:</label>
+                </div>
+                <div class="col-md-6">
+                    <textarea class="border border-secondary" type="text" name="desc" id="desc" placeholder=" Description"></textarea>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-md-6">
+                    <label for="reminder">Reminder Date:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="border border-secondary" type="date" name="reminder" id="reminder" placeholder=" Reminder Date">
+                </div>
+            </div>
+            <div class="container col-md-12 mt-3 mb-3">
+                <div class="row justify-content-end">
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 

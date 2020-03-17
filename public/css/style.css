@@ -110,3 +110,8 @@ body{
 .navbar-toggler{
     background-color: white;
 }
+
+
+.computerView{
+    display:flex;
+}
