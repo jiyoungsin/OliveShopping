@@ -9,7 +9,7 @@ router.use(express.static("public"));
 require("dotenv").config({path:'./config/keys.env'});
 
 // const expressSession = require('express-session');
-
+let user = {};
 const productModel = require("../model/product");
 const bestSellersModel = require("../model/bestSellers");
 const productCat = require("../model/productCategory");
@@ -106,20 +106,48 @@ router.get("/login",(req,res)=>
 router.post("/login",[
     check('userName','Invalid Username').isLength({ min:1}),
     check('password','Invaild Password').isLength({ min:1})
-  ],(req, res) => {
+  ], async (req, res) => {
+    const errorss = [];
+    let userNom = req.body.userName;
+    let pwd = req.body.password;
+
     const errors = validationResult(req);
-    console.log(errors);
     if (!errors.isEmpty()) {
-        return res.render("/login",{ errors: errors.array() });
+        return res.render("User/login",{ errors: errors.array() });
     }
+    try{
+        user = await Users.findOne({ Username:userNom }, function (err, user) {});
+        if(user ===  null){
+            res.render("User/login",{
+                title: "Login",
+                pageheading: "Login",
+                errorz: "Invaild Username Or Password",
+            });
+        }
+        else if(user.Psw !== pwd){
+            res.render('User/login',{
+                title: "Login",
+                pageheading: "Login",
+                errorz: "Invaild Username Or Password",
+            });
+        }
+        else{
+            console.log(user);
+            res.redirect('/User/dashboard');
+        }
+    }catch (err){
+        console.log(err);
+    }
+    // console.log(errors);
+    
     // if the user is valid. 
     // res.render("/dashboard",(req,res)=>{
     // the  username's  name  to  say Hello  John Snow.
     // on the dash board.  might have to  do  a find in the database here.
     //});
-    return res.render("User/userDashboard",{
-        UsersName: "Paul Sin",
-    });
+    // return res.render("User/userDashboard",{
+    //     UsersName: "Paul Sin",
+    // });
 });
 // ---------------- Employee Login -------------------
 router.get("/employeeLogin",(req,res)=>

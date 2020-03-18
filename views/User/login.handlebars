@@ -18,9 +18,22 @@
                     {{#each errors}}
                         <p style="color:red;">{{msg}}</p>
                     {{/each}}
-                    <div class="container col-md-12  mt-3">
+                    <p style="color:red;">{{errorz}}</p>
+                    <div class="container col-md-12 mt-3">
                         <div class="row justify-content-end">
-                            <button type="submit" class="btn btn-success" value="Sign-In"> Sign In </button>
+                            <button type="submit" class="p-3 btn btn-primary" value="Sign-In"> Sign In </button>
+                        </div>
+                    </div>
+                    <div>forget your password? <a href="/">Reset Password</a></div>
+                    <hr>
+                    <div>
+                        <div class="row justify-content-center">
+                            <div>Don't have an account?</div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <a href="/User/registration">Register for FREE!
+                                {{!-- <button class="p-3 btn btn-primary" value="regizster for FREE!"> register for FREE! </button> --}}
+                            </a>
                         </div>
                     </div>
                 </form>

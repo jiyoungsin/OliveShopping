@@ -5,6 +5,9 @@ const bestSellersModel = require("../model/bestSellers");
 const productCat = require("../model/productCategory");
 router.use(express.static("public"));
 
+
+const Product = require('../model/prod');
+
 /*GENERAL ROUTES*/
 
 //Route to direct user to home page
