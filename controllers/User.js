@@ -133,21 +133,18 @@ router.post("/login",[
         }
         else{
             console.log(user);
-            res.redirect('/User/dashboard');
+            res.render('General/index',{
+            Greetings : `Hi, ${user.FirstName}`,
+            title: "Home",
+            pageHeader: "Home", 
+            errors: errors.array(),
+            productCat : productCat.getAllProducts(),
+            productsBestSeller:bestSellersModel.getAllProducts(),
+        });
         }
     }catch (err){
         console.log(err);
     }
-    // console.log(errors);
-    
-    // if the user is valid. 
-    // res.render("/dashboard",(req,res)=>{
-    // the  username's  name  to  say Hello  John Snow.
-    // on the dash board.  might have to  do  a find in the database here.
-    //});
-    // return res.render("User/userDashboard",{
-    //     UsersName: "Paul Sin",
-    // });
 });
 // ---------------- Employee Login -------------------
 router.get("/employeeLogin",(req,res)=>
@@ -177,9 +174,14 @@ router.get("/logout",(req,res)=>{
 });
 
 //Route the user to their dashboard 
-router.get("/dashboard",(req,res)=>
+router.get("/userDashboard",(req,res)=>
 {
-    res.render("User/userDashboard");
+    res.render("User/userDashboard",{
+        title: "Home",
+        pageHeader: "Home", 
+        productCat : productCat.getAllProducts(),
+        productsBestSeller:bestSellersModel.getAllProducts(),
+    });
 });
 
 // ---------------- Profile --------------------------

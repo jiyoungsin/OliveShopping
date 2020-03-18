@@ -1,4 +1,108 @@
-{{!-- <h1 style="color:white">Welcome {{ firstname }} {{lastname}}</h1> --}}
+<h1 style="color:white">TRENDING</h1>
+<div class="row bg-light">
+    <div class="p-3 col-md-3 border border-dark">
+        <div class="d-flex justify-content-center">
+            <img class="img-fluid" src="https://picsum.photos/200/250" alt="clothing">
+        </div>
+        <div class="container text-center">
+            <p><strong>Item Name</strong></p>
+            <p>Lorem ipsum dolo.</p>
+            <p>$$$</p>
+        </div>
+        <div class="row justify-content-end">
+            <button type="button" class="btn btn-warning">Add to Cart</button>
+        </div>
+    </div>
+    <div class="p-3 col-md-3 border border-dark">
+        <div class="d-flex justify-content-center">
+            <img class="img-fluid" src="https://picsum.photos/200/250" alt="clothing">
+        </div>
+        <div class="container text-center">
+            <p><strong>Item Name</strong></p>
+            <p>Lorem ipsum dolo.</p>
+            <p>$$$</p>
+        </div>
+        <div class="row justify-content-end">
+            <button type="button" class="btn btn-warning">Add to Cart</button>
+        </div>
+    </div>
+    <div class="p-3 col-md-3 border border-dark">
+        <div class="d-flex justify-content-center">
+            <img class="img-fluid" src="https://picsum.photos/200/250" alt="clothing">
+        </div>
+        <div class="container text-center">
+            <p><strong>Item Name</strong></p>
+            <p>Lorem ipsum dolo.</p>
+            <p>$$$</p>
+        </div>
+        <div class="row justify-content-end">
+            <button type="button" class="btn btn-warning">Add to Cart</button>
+        </div>
+    </div>
+    <div class="p-3 col-md-3 border border-dark">
+        <div class="d-flex justify-content-center">
+            <img class="img-fluid" src="https://picsum.photos/200/250" alt="clothing">
+        </div>
+        <div class="container text-center">
+            <p><strong>Item Name</strong></p>
+            <p>Lorem ipsum dolo.</p>
+            <p>$$$</p>
+        </div>
+        <div class="row justify-content-end">
+            <button type="button" class="btn btn-warning">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<section class="on-sale">
+    <div class="container">
+        <div class="title-box">
+            <h2>On&nbsp;Sale</h2>
+        </div>
+    </div>
+</section>
+<section class="featured-row">
+    <div class="container">
+        <div class="row">
+            {{#each productsBestSeller}}
+                <div class="col-md-3">
+                    <a href="{{this.href}}"><img class="img-fluid" src="{{this.img}}" alt="First"></a>
+                    <p style="color:white;">{{this.title}}</p>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+<section class="featured-row">
+    <div class="container">
+        <div class="row">
+            {{#each productsBestSeller}}
+                <div class="col-md-3">
+                    <p style="color:white;">{{this.title}}</p>
+                    <a href="{{this.href}}"><img class="img-fluid" src="{{this.img}}" alt="First"></a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</section> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <h1 style="color:white">Welcome {{ firstname }} {{lastname}}</h1>
 <div class="row">
     <div class="col-2">
         <div><a class="text-white" href="/">&#9776; Categories</a></div>
@@ -56,16 +160,4 @@
             </div>
         </div>
     </div>
-    <div class="container col-2">
-        <div class="row justify-content-center">
-            <div class="container col-3">
-                <img class="img-fluid rounded-circle" src="./images/profilePic.png" alt="User Display picture">
-            </div>
-        </div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <p class="text-white">Welcome {{x}}</p>
-            </div>
-        </div>
-    </div>
-</div>
+</div> --}}
