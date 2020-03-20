@@ -38,6 +38,10 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    Employee:  {
+        type: Boolean,
+        default: false,
+    },
 });
 
 UserSchema.plugin(autoIncrement.plugin, 'Users')

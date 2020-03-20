@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const express= require("express");
 //const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
@@ -10,6 +11,7 @@ require("dotenv").config({path:'./config/keys.env'});
 //import your router objects
 const userRoutes = require("./controllers/User");
 const taskRoutes = require("./controllers/Task");
+const accountRoutes = require("./controllers/Account");
 const generalRoutes = require("./controllers/General");
 
 //creation of app object
@@ -32,6 +34,7 @@ app.set("view engine","handlebars");
 app.use("/",generalRoutes);  // mapping the generalRoutes route.
 app.use("/user",userRoutes); // mapping the userRoutes route.
 app.use("/task",taskRoutes); // mapping the taskRoutes route
+app.use("/Registration",accountRoutes); // mapping the taskRoutes route
 
 app.use("/",(req,res)=>{
     res.render("General/404");

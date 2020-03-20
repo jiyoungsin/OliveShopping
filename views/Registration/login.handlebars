@@ -6,7 +6,7 @@
                     <div class="col-3"><img class="img-fluid"src="./images/logo.png" alt="My Logo"></div>
                     <div class="col-9 d-flex align-items-end"><h2>Login</h2></div>
                 </div>
-                <form method="POST" action="/User/login">
+                <form method="POST" action="/Registration/login">
                     <div class="row">
                         <div class="col-md-5"><label for="userName">Username:</label></div>
                         <div class="col-md-7"><input class="border border-secondary" type="text" name="userName" id="userName" placeholder=" Username"></div>
@@ -21,7 +21,7 @@
                     <p style="color:red;">{{errorz}}</p>
                     <div class="container col-md-12 mt-3">
                         <div class="row justify-content-end">
-                            <button type="submit" class="p-3 btn btn-primary" value="Sign-In"> Sign In </button>
+                            <button type="submit" class=" btn btn-success" value="Sign-In"> Sign In </button>
                         </div>
                     </div>
                     <div>forget your password? <a href="/">Reset Password</a></div>
@@ -31,7 +31,7 @@
                             <div>Don't have an account?</div>
                         </div>
                         <div class="row justify-content-center">
-                            <a href="/User/registration">Register for FREE!
+                            <a href="/Registration/registration">Register for FREE!
                                 {{!-- <button class="p-3 btn btn-primary" value="regizster for FREE!"> register for FREE! </button> --}}
                                 {{!-- can make this into a button however the aTag looks clean... debateable  --}}
                             </a>
