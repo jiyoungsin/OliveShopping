@@ -1,38 +1,16 @@
 const bcrypt = require('bcrypt');
 const express = require('express')
 const mongoose = require('mongoose');
-const session = require('express-session');
 const Users = require('../model/schema');
 const { check, validationResult } = require('express-validator');
-const MongoStore = require('connect-mongo')(session);
 
 const router = express.Router();
 router.use(express.static("public"));
 require("dotenv").config({path:'./config/keys.env'});
 let user = {};
-const productModel = require("../model/product");
 const bestSellersModel = require("../model/bestSellers");
 const productCat = require("../model/productCategory");
-router.use(session({
-    secret: 'secret-key', 
-    resave: false,
-    saveUninitalized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection}),
-    cookie: { maxAge: 180 * 60 * 1000 },
-}))
-app.use((req,res,next) => { 
-    res.locals.session = req.session;
-    next();
-});
-
 const saltRounds = 10;
-
-mongoose.connect(process.env.URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(()=>{console.log(`Connected to MongoDB`);})
-.catch(err=>console.log(`Error: ${err}`));
 
 router.get("/registration",(req,res)=>
 {

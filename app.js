@@ -1,9 +1,10 @@
 const bcrypt = require('bcrypt');
 const express= require("express");
-//const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
+const session = require('express-session');
 const exphbs = require("express-handlebars");
-//const expressSession = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 //This loads all our environment variables from the keys.env
 require("dotenv").config({path:'./config/keys.env'});
@@ -17,17 +18,38 @@ const generalRoutes = require("./controllers/General");
 //creation of app object
 const app = express();
 
+mongoose.connect(process.env.URI, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(()=>{console.log(`Connected to MongoDB`);})
+.catch(err=>console.log(`Error: ${err}`));
+
+// creating a connection to mongooseStore.
+//store: new MongoStore({ mongooseConnection: mongoose.connection}),
+
 //bodyParser middleware
 app.use(bodyParser.urlencoded({extended:false}));
 
 
-//express static middleware
-app.use(express.static("public"));
 
 //Handlebars middlware
 app.engine("handlebars",exphbs());
 app.set("view engine","handlebars");
 
+app.use(session({
+    secret: 'secret-key', 
+    resave: false,
+    saveUninitalized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection}),
+    cookie: { maxAge: 180 * 60 * 1000 },
+}))
+
+
+//express static middleware
+app.use(express.static("public"));
+
+app.use((req,res,next) => { 
+    res.locals.session = req.session;
+    next();
+});
 
 //MAPs EXPRESS TO ALL OUR  ROUTER OBJECTS
 
@@ -40,9 +62,7 @@ app.use("/",(req,res)=>{
     res.render("General/404");
 }); // Mapping an error page route as a catch case.
 
-// mongoose.connect(process.env.URI, {useNewUrlParser: true, useUnifiedTopology: true})
-// .then(()=>{console.log(`Connected to MongoDB`);})
-// .catch(err=>console.log(`Error: ${err}`));
+
 
 // Port is using the env key or 3000.
 const PORT = process.env.PORT;
