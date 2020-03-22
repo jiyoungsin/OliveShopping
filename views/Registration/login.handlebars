@@ -2,26 +2,20 @@
     <div class="row justify-content-center">
         <div class="bg-white p-4 col-md-6">
             <div class="container center">
-                <div class="row mb-3">
-                    <div class="col-3"><img class="img-fluid"src="./images/logo.png" alt="My Logo"></div>
-                    <div class="col-9 d-flex align-items-end"><h2>Login</h2></div>
-                </div>
+                <img class="mb-4" src="./images/logo.png" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                 <form method="POST" action="/Registration/login">
-                    <div class="row">
-                        <div class="col-md-5"><label for="userName">Username:</label></div>
-                        <div class="col-md-7"><input class="border border-secondary" type="text" name="userName" id="userName" placeholder=" Username"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5"><label for="password">Password:</label></div>
-                        <div class="col-md-7"><input class="border border-secondary" type="password" name="password" id="password" placeholder=" At least 6 characters"></div>
-                    </div>
+                    <label for="userName" class="sr-only">Username:</label>
+                    <input type="text" id="userName" class="form-control" placeholder="User Name"  name="userName" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password:</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"required>
                     {{#each errors}}
                         <p style="color:red;">{{msg}}</p>
                     {{/each}}
                     <p style="color:red;">{{errorz}}</p>
                     <div class="container col-md-12 mt-3">
                         <div class="row justify-content-end">
-                            <button type="submit" class=" btn btn-success" value="Sign-In"> Sign In </button>
+                            <button type="submit" class=" btn btn-primary" value="Sign-In"> Sign In </button>
                         </div>
                     </div>
                     <div>forget your password? <a href="/">Reset Password</a></div>
@@ -37,12 +31,12 @@
                             </a>
                         </div>
                     </div>
+                    <p class="mt-5 mb-2 text-muted">&copy; Paul Sin</p>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 <br>
 <br>
 <br>

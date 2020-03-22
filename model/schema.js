@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
+const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
 const connect = mongoose.createConnection(process.env.URI);
@@ -20,6 +21,7 @@ const UserSchema = new Schema({
     },
     Email:{
         type: String,
+        unique: true,
         required:true,
     },
     Username:{
@@ -44,6 +46,7 @@ const UserSchema = new Schema({
     },
 });
 
-UserSchema.plugin(autoIncrement.plugin, 'Users')
+UserSchema.plugin(uniqueValidator);
+UserSchema.plugin(autoIncrement.plugin, 'Users');
 // exporting the module
 module.exports = connect.model('Users',UserSchema);
