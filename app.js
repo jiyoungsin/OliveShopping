@@ -47,6 +47,7 @@ app.use(session({
 app.use(express.static("public"));
 
 app.use((req,res,next) => { 
+    //res.locals.login = req.isAuthenticated(),
     res.locals.session = req.session;
     next();
 });
