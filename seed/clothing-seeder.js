@@ -1,57 +1,56 @@
-const mongoose = require('mongoose');
+const mdSeed = require('mongoose-data-seed');
+console.log("@#@#@#!@#!@#!@");
 const Clothes = require('../model/clothes');
-
-mongoose.createConnection(process.env.URI);
-
-let cloths = [
-    new Clothes({
-    ImagePath: '../images/yshirt.jpg',
-    Title: 'Random Image',
-    Desc: 'An image of a girl riding unicycle with her dog',
-    Price: 10,
-}),
-new Clothes({
-    ImagePath: '../images/white.jpg',
-    Title: 'Random Image',
-    Desc: 'An image of a girl riding unicycle with her dog',
-    Price: 10,
-}),
-new Clothes({
-    ImagePath: '../images/black.jpg',
-    Title: 'Random Image',
-    Desc: 'An image of a girl riding unicycle with her dog',
-    Price: 10,
-}),
-new Clothes({
-    ImagePath: '../images/pablo.jpg',
-    Title: 'Random Image',
-    Desc: 'An image of a girl riding unicycle with her dog',
-    Price: 10,
-}),
-new Clothes({
-    ImagePath: '../images/japan.jpg',
-    Title: 'Random Image',
-    Desc: 'An image of a girl riding unicycle with her dog',
-    Price: 10,
-}),
-new Clothes({
-    ImagePath: '../images/yshirt.jpg',
-    Title: 'Random Image',
-    Desc: 'An image of a girl riding unicycle with her dog',
-    Price: 10,
-}),
+const Seeder = mdSeed.Seeder;
+console.log(mdSeed);
+const cloths = [
+    {
+        ImagePath: '../images/yshirt.jpg',
+        Title: 'Random Image',
+        Desc: 'An image of a girl riding unicycle with her dog',
+        Price: 10,
+    },
+    {
+        ImagePath: '../images/white.jpg',
+        Title: 'Random Image',
+        Desc: 'An image of a girl riding unicycle with her dog',
+        Price: 10,
+    },
+    {
+        ImagePath: '../images/black.jpg',
+        Title: 'Random Image',
+        Desc: 'An image of a girl riding unicycle with her dog',
+        Price: 10,
+    },
+    {
+        ImagePath: '../images/pablo.jpg',
+        Title: 'Random Image',
+        Desc: 'An image of a girl riding unicycle with her dog',
+        Price: 10,  
+    },
+    {
+        ImagePath: '../images/japan.jpg',
+        Title: 'Random Image',
+        Desc: 'An image of a girl riding unicycle with her dog',
+        Price: 10,
+    },
+    {
+        ImagePath: '../images/yshirt.jpg',
+        Title: 'Random Image',
+        Desc: 'An image of a girl riding unicycle with her dog',
+        Price: 10,
+    },
 ];
-let done = 0;
 
-for(let i=0; i < cloths.length; i++){
-   cloths[i].save(function(){
-        done++;
-        if ( done == products.length){ 
-            exit();
-        };
-   });
-};
-
-let exit = ()=>{
-mongoose.disconnect();
-};
+class ClothesSeeder extends Seeder {
+    async shouldRun() {
+        return Clothes.countDocuments()
+        .exec()
+        .then(count => count === 0);
+    }  
+    async run() {
+        return Clothes.create(cloths);
+    }
+}
+  
+module.exports = ClothesSeeder;

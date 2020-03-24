@@ -6,6 +6,8 @@ const session = require('express-session');
 const exphbs = require("express-handlebars");
 const MongoStore = require('connect-mongo')(session);
 
+const seeder = require('./md-seed-config');
+
 //This loads all our environment variables from the keys.env
 require("dotenv").config({path:'./config/keys.env'});
 
