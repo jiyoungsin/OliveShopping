@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 //const autoIncrement = require('mongoose-auto-increment');
 //const uniqueValidator = require('mongoose-unique-validator');
 
+const connect = mongoose.createConnection(process.env.URI);
+
 const ClothesSchema = new Schema({
     ImagePath:{
         type: String,
