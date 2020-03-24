@@ -1,8 +1,6 @@
 const mdSeed = require('mongoose-data-seed');
-console.log("@#@#@#!@#!@#!@");
 const Clothes = require('../model/clothes');
 const Seeder = mdSeed.Seeder;
-console.log(mdSeed);
 const cloths = [
     {
         ImagePath: '../images/yshirt.jpg',
