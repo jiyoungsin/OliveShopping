@@ -50,11 +50,6 @@ router.post('/uploadCloth',async (req, res, next) => {
         Desc,
         Price,
     } = req.body;
-    const errors = validationResult(req);
-    // if there is a error send the error
-    if (!errors.isEmpty()) {
-        return res.render("Task/uploadCloth",{ errors: errors.array() });
-    }
     try {
         const cloth = new Cloths({
             ImagePath: ImagePath,

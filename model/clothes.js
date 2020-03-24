@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 //const autoIncrement = require('mongoose-auto-increment');
 //const uniqueValidator = require('mongoose-unique-validator');
 
-const connect = mongoose.createConnection(process.env.MONGODBURI);
+const connect = mongoose.createConnection(process.env.URI);
 
 const ClothesSchema = new Schema({
     ImagePath:{
@@ -19,7 +19,7 @@ const ClothesSchema = new Schema({
         default: "No Description",
     },
     Price: {
-        type: Number,
+        type: String,
         required: true,
     },
     DateAdded: {
@@ -28,8 +28,4 @@ const ClothesSchema = new Schema({
     },
 });
 
-//  change users to the const variable name.
-//ClothesSchema.plugin(autoIncrement.plugin, 'Users');
-
-// exporting the module
 module.exports = connect.model('Clothes',ClothesSchema);

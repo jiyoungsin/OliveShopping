@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const session = require('express-session');
 const exphbs = require("express-handlebars");
+const fileUpload = require('express-fileupload');
 const MongoStore = require('connect-mongo')(session);
 
 const seeder = require('./md-seed-config');
@@ -29,6 +30,7 @@ mongoose.connect(process.env.URI, {useNewUrlParser: true, useUnifiedTopology: tr
 
 //bodyParser middleware
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(fileUpload());
 
 
 

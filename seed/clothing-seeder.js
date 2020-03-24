@@ -4,8 +4,8 @@ const Seeder = mdSeed.Seeder;
 const cloths = [
     {
         ImagePath: '../images/yshirt.jpg',
-        Title: 'Random Image',
-        Desc: 'An image of a girl riding unicycle with her dog',
+        Title: 'Button Down',
+        Desc: 'A comfortable shirt for any occasion.',
         Price: 10,
     },
     {

@@ -40,6 +40,9 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    ProfilePic:{
+        type:String,
+    },
     Employee:  {
         type: Boolean,
         default: false,

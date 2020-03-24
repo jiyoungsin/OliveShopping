@@ -2,10 +2,13 @@ const bcrypt = require('bcrypt');
 const express = require('express')
 const mongoose = require('mongoose');
 const Users = require('../model/schema');
+const fileUpload = require('express-fileupload');
+const path = require('path');
 const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
 router.use(express.static("public"));
+router.use(fileUpload());
 require("dotenv").config({path:'./config/keys.env'});
 let user = {};
 const bestSellersModel = require("../model/bestSellers");
@@ -61,7 +64,18 @@ router.post('/registration',[
             Gender:gender,
         });
 
-        const userSaved = await user.save();
+        const userSaved = await user.save()
+        .then((user)=>{
+            console.log("SADASDA");
+            let x = req.files.proPic.name;
+            console.log(x);
+
+            req.files.proPic.name = `${user._id}${req.files.proPic.name}${path.parse(req.files.proPic.name).ext}`;
+            req.files.proPic.mv(`public/uploads/${req.files.proPic.name}`);
+            Users.updateOne({_id:user._id},{
+                ProfilePic: req.files.proPic.name,
+            }); 
+        });
         const sgMail = require('@sendgrid/mail');
         sgMail.setApiKey(process.env.MY_SENDGRID_KEY);
         msg = {
