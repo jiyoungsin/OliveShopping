@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const Users = require('../model/schema');
+const Cloths = require('../model/clothes');
 const { check, validationResult } = require('express-validator');
 
 router.use(express.static("public"));
@@ -169,11 +170,13 @@ router.get("/logout",(req,res)=>{
 //Route the user to their dashboard 
 router.get("/userDashboard",(req,res)=>
 {
+    let cloths = Cloths.find()
     res.render("User/userDashboard",{
         title: "Home",
         pageHeader: "Home", 
         productCat : productCat.getAllProducts(),
         productsBestSeller:bestSellersModel.getAllProducts(),
+        cloths: cloths,
     });
 });
 

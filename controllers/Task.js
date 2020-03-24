@@ -2,6 +2,7 @@
 /*********************Task ROUTES***************************/
 const express = require('express')
 const router = express.Router();
+const Cloths = require('../model/clothes');
 // const productModel = require("./model/product");
 // const bestSellersModel = require("./model/bestSellers");
 // const productCat = require("./model/productCategory");
@@ -36,6 +37,39 @@ router.get("/description/",(req,res)=>{
 router.get("/edit/",(req,res)=>
 {
    
+});
+
+router.get('/uploadCloth',(req,res)=>{
+    res.render("Task/uploadCloth");
+});
+
+router.post('/uploadCloth',async (req, res, next) => {
+    const {
+        ImagePath,
+        Title,
+        Desc,
+        Price,
+    } = req.body;
+    const errors = validationResult(req);
+    // if there is a error send the error
+    if (!errors.isEmpty()) {
+        return res.render("Task/uploadCloth",{ errors: errors.array() });
+    }
+    try {
+        const cloth = new Cloths({
+            ImagePath: ImagePath,
+            Title: Title,
+            Desc: Desc,
+            Price:Price,
+        });
+        const clothSaved = await cloth.save();
+        res.render("Registration/login",{
+            title: "Login",
+            pageHeader: "Login",
+        });
+    } catch (err) {
+        console.error(err);
+    };
 });
 
 
