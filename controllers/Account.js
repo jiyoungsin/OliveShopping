@@ -15,6 +15,8 @@ const bestSellersModel = require("../model/bestSellers");
 const productCat = require("../model/productCategory");
 const saltRounds = 10;
 
+// ---------------- Regular User Registration -------------------
+
 router.get("/registration",(req,res)=>
 {
     res.render("Registration/registration",{
@@ -94,7 +96,7 @@ router.post('/registration',[
         console.error(err);
     };
 });
-
+// ----------------Regular People Log in -----------------------------
 //Route to direct user to the login form
 router.get("/login",(req,res)=>
 {

@@ -3,31 +3,31 @@ const Clothes = require('../model/clothes');
 const Seeder = mdSeed.Seeder;
 const cloths = [
     {
-        ImagePath: '../images/yshirt.jpg',
+        ImagePath: '/images/yshirt.jpg',
         Title: 'Button Down',
         Desc: 'A comfortable shirt for any occasion.',
         Price: 10,
     },
     {
-        ImagePath: '../images/white.jpg',
+        ImagePath: '/images/white.jpg',
         Title: 'Random Image',
         Desc: 'An image of a girl riding unicycle with her dog',
         Price: 10,
     },
     {
-        ImagePath: '../images/black.jpg',
+        ImagePath: '/images/black.jpg',
         Title: 'Random Image',
         Desc: 'An image of a girl riding unicycle with her dog',
         Price: 10,
     },
     {
-        ImagePath: '../images/pablo.jpg',
+        ImagePath: '/images/pablo.jpg',
         Title: 'Random Image',
         Desc: 'An image of a girl riding unicycle with her dog',
         Price: 10,  
     },
     {
-        ImagePath: '../images/japan.jpg',
+        ImagePath: '/images/japan.jpg',
         Title: 'Random Image',
         Desc: 'An image of a girl riding unicycle with her dog',
         Price: 10,

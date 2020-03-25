@@ -1,52 +1,4 @@
 <h1 style="color:white">TRENDING</h1>
-<div class="row justify-content-around">
-    <div class="p-5 col-md-3 border border-dark bg-light ">
-        <div class="d-flex justify-content-center">
-            <img class="img-fluid" src="https://picsum.photos/200/250" alt="clothing">
-        </div>
-        <div class="container text-center">
-            <p><strong>Item Name</strong></p>
-            <p>Lorem ipsum dolo.</p>
-            <p>$$$</p>
-        </div>
-        <div class="row justify-content-end">
-            <a href="/add-to-cart/1" class="btn btn-success" role="button">Add to Cart</a>
-            {{!-- <a href="/add-to-cart/{{ this.id }}" class="btn btn-success" role="button">Add to Cart</a> --}}
-        </div>
-    </div>
-    <div class="p-5 col-md-3 border border-dark bg-light ">
-        <div class="d-flex justify-content-center">
-            <img class="img-fluid" src="https://picsum.photos/200/250" alt="clothing">
-        </div>
-        <div class="container text-center">
-            <p><strong>Item Name</strong></p>
-            <p>Lorem ipsum dolo.</p>
-            <p>$$$</p>
-        </div>
-        <div class="row justify-content-end">
-            <button type="button" class="btn btn-warning">Add to Cart</button>
-        </div>
-    </div>
-    <div class="p-5 col-md-3 border border-dark bg-light ">
-        <div class="d-flex justify-content-center">
-            <img class="img-fluid" src="https://picsum.photos/200/250" alt="clothing">
-        </div>
-        <div class="container text-center">
-            <p><strong>Item Name</strong></p>
-            <p>Lorem ipsum dolo.</p>
-            <p>$$$</p>
-        </div>
-        <div class="row justify-content-end">
-            <button type="button" class="btn btn-warning">Add to Cart</button>
-        </div>
-    </div>
-</div>
-
-<br>
-<br>
-<br>
-<br>
-
 
 <section class="on-sale">
     <div class="container">
@@ -55,20 +7,32 @@
         </div>
     </div>
 </section>
-<section class="featured-row">
-    <div class="container">
-        <div class="row">
-            {{#each cloths}}
-                <div class="col-md-3">
-                    <img class="img-fluid" src="{{ this.ImagePath }}" alt="First">
-                    <p style="color:white;">{{ this.title }}</p>
-                    <p style="color:white;">{{ this.Desc }}</p>
-                    <p style="color:white;">{{ this.Price }}</p>
-                </div>
-            {{/each}}
+{{#each cloths}}
+<div class="row justify-content-between m-5">
+    {{#each this}}
+    <div class="p-3 col-md-3 border border-dark bg-light ">
+        <div class="d-flex justify-content-center">
+            <img class="img-fluid" src="{{ this.ImagePath}}" alt="clothing">
+        </div>
+        <div class="container text-center">
+            <p><strong>{{ this.Title }}</strong></p>
+        </div>
+        <div class="container">
+            <p>{{ this.Desc }}</p>
+        </div>
+        <div class="container text-center">
+            <p><strong>${{ this.Price }}</strong></p>
+        </div>
+
+        <div class="row justify-content-end">
+            <a href="/add-to-cart/{{this._id}}" class="btn btn-success" role="button" value="">Add to Cart</a>
         </div>
     </div>
-</section>
+    {{/each}}
+</div>
+{{/each}}
+
+
 
 {{!-- {{#each productsBestSeller}}
     <div class="col-sm-6 col-md-4">

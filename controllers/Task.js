@@ -3,9 +3,7 @@
 const express = require('express')
 const router = express.Router();
 const Cloths = require('../model/clothes');
-// const productModel = require("./model/product");
-// const bestSellersModel = require("./model/bestSellers");
-// const productCat = require("./model/productCategory");
+const Cart = require('../model/cart');
 router.use(express.static("public"));
 //Route to direct use to Add Task form
 router.get("/add",(req,res)=>
@@ -34,9 +32,18 @@ router.get("/description/",(req,res)=>{
 
 
 //Route to direct user to edit task form
-router.get("/edit/",(req,res)=>
+router.get("/checkout",(req,res)=>
 {
-   
+    if(!req.session.cart){ 
+        return res.render("Task/checkout",{ 
+            products : null
+        }); 
+    };
+    let cart = new Cart(req.sessioin.cart);
+    res.render("Task/checkOut", {
+        products:  cart.generateArray(),
+        totalPrice: cart.totalPrice,
+    });
 });
 
 router.get('/uploadCloth',(req,res)=>{
@@ -58,9 +65,9 @@ router.post('/uploadCloth',async (req, res, next) => {
             Price:Price,
         });
         const clothSaved = await cloth.save();
-        res.render("Registration/login",{
-            title: "Login",
-            pageHeader: "Login",
+        res.render("General/index",{
+            title: "Home",
+            pageHeader: "Home",
         });
     } catch (err) {
         console.error(err);

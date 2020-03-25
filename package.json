@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.3",
     "@sendgrid/mail": "^6.5.4",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
@@ -31,5 +32,8 @@
   },
   "mdSeed": {
     "seedersFolder": "./seed"
+  },
+  "devDependencies": {
+    "handlebars": "^4.5.0"
   }
 }

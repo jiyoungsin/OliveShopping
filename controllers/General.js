@@ -1,13 +1,16 @@
 const express = require('express')
 const router = express.Router();
-//const productModel = require("./model/product");
+const mongoose = require('mongoose');
+const session = require('express-session');
 const bestSellersModel = require("../model/bestSellers");
 const productCat = require("../model/productCategory");
+const cloth = require('../model/clothes');
 const Cart = require('../model/cart');
 
 router.use(express.static("public"));
 
-
+// this is needed?
+mongoose.createConnection(process.env.URI);
 
 const Product = require('../model/prod');
 
@@ -32,18 +35,34 @@ router.get("/about",(req,res)=>
 });
 
 router.get("/add-to-cart/:id", (req,res,next)=>{
+    
     let prodID = req.params.id;
-    let car = new Cart(req.session.cart ? req.session.cart : {});
+    let cart = new Cart(req.session.cart ? req.session.cart : {item: {}});
 
-    Product.findById(prodID, function (err,product){
+    cloth.findById(prodID, function (err,product){
         if(err){
-            console.log(err);
-            return res.redirect("/");
+            return res.render("General/index",{
+                title: "Home",
+                pageHeader: "Home",
+            });
         };
         cart.add(product, product.id);
         req.session.cart = cart;
-        console.log(cart);
-        res.redirect('/');
+        res.redirect("/");
+    });
+});
+
+router.get("/checkout",(req,res)=>
+{
+    if(!req.session.cart){ 
+        return res.render("General/checkout",{ 
+            products : null,
+        }); 
+    };
+    let cart = new Cart(req.session.cart);
+    res.render("General/checkOut", {
+        products:  cart.generateArray(),
+        totalPrice: cart.totalPrice,
     });
 });
 

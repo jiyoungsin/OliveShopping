@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-//const autoIncrement = require('mongoose-auto-increment');
-//const uniqueValidator = require('mongoose-unique-validator');
-
-const connect = mongoose.createConnection(process.env.URI);
+const autoIncrement = require('mongoose-auto-increment');
 
 const ClothesSchema = new Schema({
     ImagePath:{
         type: String,
-        default: "#",
+        required: true,
     },
     Title:{
         type: String,
-        default: "No Name",
+        required: true,
     },
     Desc: {
         type: String,
-        default: "No Description",
+        required: true,
     },
     Price: {
         type: String,
@@ -28,4 +25,5 @@ const ClothesSchema = new Schema({
     },
 });
 
-module.exports = connect.model('Clothes',ClothesSchema);
+ClothesSchema.plugin(autoIncrement.plugin, 'Clothes');
+module.exports = mongoose.model('Clothes',ClothesSchema);
