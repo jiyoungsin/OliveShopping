@@ -1,42 +1,52 @@
-{{# if products}}
-<div class="conatiner bg-light">
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offser-3 col-sm-offset-3">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <span class="badge"></span>
-                    <strong>Title</strong>
-                    <span class="label label-success">$12</span>
-                    <div class="btn-group bg-light">
-                        <button class="btn btn-primary btn-xs dropdown-toggle" type="button">Action<span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Reduce By 1</a></li>
-                            <li><a href="#">Remove All</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
+<div class="container-fluid bg-light">
+    <div class="container text-center">
+        <h2>CHECKOUT</h2>
+    </div>
+    {{# if products}}
+    <div class="conatiner">
+        <div class="row justify-content-center pb-5">
+            <div class="col-sm-6 col-md-6 bg-light border boder-dark">
+                <div class="row justify-content-center p-5">
+                    <ul class="list-group">
+                        {{#each products}}
+                            <li class="list-group-item">
+                                <img class="img-rounded" src="{{this.item.ImagePath}}" alt="Desired Product" style="width:80px;height:100px">
+                                <span class="badge">{{this.qty}}</span>
+                                <strong>{{this.item.Title}}</strong>
+                                <span class="label label-success">${{this.Price}}</span>
+                                <div class="btn-group bg-light">
+                                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Reduce By 1</a></li>
+                                        <li><a href="#">Remove All</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="row justify-content-end mr-5">
+                    <strong>Total: ${{totalCost}}</strong>
+                </div>
+                <hr>
+                <div class="row justify-content-end mr-5 pb-3">
+                    <button type="button" class="btn btn-success">Checkout</button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offser-3 col-sm-offset-3">
-        <strong>Total: </strong>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offser-3 col-sm-offset-3">
-        <button type="button" class="btn btn-success">Checkout</button>
-        </div>
-    </div>
-</div>
-{{ else }}
 
-<div class="conatiner bg-light">
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offser-3 col-sm-offset-3">
-        <strong>No Items In Cart</strong>
+    {{ else }}
+    
+    <div class="conatiner border boder-dark">
+        <div class="row justify-content-center">
+            <strong>No Items In Cart</strong>
+        </div>
+        <hr>
+        <div class="row justify-content-end mr-5 pb-3">
+                <strong>Total: $0.00</strong>
         </div>
     </div>
-</div>
-{{/if}}
+
+    {{/if}}
+</dv>

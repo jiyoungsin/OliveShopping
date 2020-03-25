@@ -62,7 +62,7 @@ router.get("/checkout",(req,res)=>
     let cart = new Cart(req.session.cart);
     res.render("General/checkOut", {
         products:  cart.generateArray(),
-        totalPrice: cart.totalPrice,
+        totalCost: cart.totalCost,
     });
 });
 
