@@ -29,11 +29,5 @@
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-data-seed": "^2.1.6",
     "mongoose-unique-validator": "^2.0.3"
-  },
-  "mdSeed": {
-    "seedersFolder": "./seed"
-  },
-  "devDependencies": {
-    "handlebars": "^4.5.0"
   }
 }
