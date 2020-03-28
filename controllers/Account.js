@@ -126,7 +126,7 @@ router.post("/login",[
         return res.render("Registration/login",{ errors: errors.array() });
     }
     try{
-       
+        
         user = await Users.findOne({ Username:userNom }, function (err, user) {});
         const unhashedPassword = await bcrypt.compareSync(pwd, user.Psw); 
         // returns true if the unhashed password matches the Password given in the form
