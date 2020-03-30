@@ -112,7 +112,7 @@ router.post("/login",[
         // returns true if the unhashed password matches the Password given in the form
 
         if(user.Employee){
-            res.render('Task/empLogin',{
+            res.render('Clerk/empLogin',{
                 Greetings : `Hi, ${user.FirstName}`,
                 title: "EmpLogin",
                 pageHeader: "EmpLogin", 

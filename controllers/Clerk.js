@@ -8,62 +8,50 @@ const Cart = require('../model/cart');
 router.use(express.static("public"));
 //Route to direct use to Add Task form
 router.get("/add",(req,res)=> {
-    res.render("Task/taskAddForm");
+    res.render("Clerk/taskAddForm");
 });
-
-//Route to process user's request and data when the user submits the add task form
-router.post("/add",(req,res)=> {
-   
-  
-});
-
-////Route to fetch all tasks
-router.get("/list",(req,res)=> {
-    res.render("Task/taskdashboard");
-});
-
-//Route to direct user to the task profile page
-router.get("/description/",(req,res)=>{
-
-   
-})
-
 
 //Route to direct user to edit task form
+ // TO DO ... //
+/*
+router.get();
+router.post();
+*/
+
+
+//Route to direct user to the checkout Page
 router.get("/checkout",(req,res)=> {
     if(!req.session.cart){ 
-        return res.render("Task/checkout",{ 
+        return res.render("Clerk/checkout",{ 
             products : null
         }); 
     };
     let cart = new Cart(req.sessioin.cart);
-    res.render("Task/checkOut", {
+    res.render("Clerk/checkOut", {
         products:  cart.generateArray(),
         totalPrice: cart.totalPrice,
     });
 });
 
-router.get('/uploadCloth',(req,res)=>{
-    res.render("Task/uploadCloth",{
+//Route to process user's request when the user wants to submits a Product
+router.get('/Upload',(req,res)=>{
+    res.render("Clerk/Upload",{
         title: "Upload",
         pageHeader: "Upload",
     });
 });
 
-router.post('/uploadCloth',async (req, res) => {
+//Route to process user's request and data when the user submits the add Product form
+router.post('/Upload',async (req, res) => {
     const { ImagePath, Title, Desc, Price, Category, On_Hand, } = req.body;
     try {
         const product = new Product({ ImagePath: ImagePath, Title: Title, Desc: Desc, Price:Price, Category:Category, On_Hand:On_Hand,});
         const clothSaved = await product.save();
-        // try this...
-        res.render("Task/uploadCloth",{
+        res.render("Clerk/Upload",{
             title: "Upload",
             pageHeader: "Upload",
+            confirmation: "Upload Successful",
         });
-        // res.render("General/index",{
-        //     title: "Home",
-        //     pageHeader: "Home",
-        // });
     } catch (err) {
         console.error(err);
     };

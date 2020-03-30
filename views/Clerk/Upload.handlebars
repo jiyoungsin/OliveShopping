@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="bg-white p-5 col-md-7 lightBorder">
             <div class="container">
-                <form class="container mt-3" method="POST" action="/Task/uploadCloth" enctype="multipart/form-data">
+                <form class="container mt-3" method="POST" action="/Clerk/upload" enctype="multipart/form-data">
                     <div class="justify-content-between">
                         <div class="row">
                             <div class="col-md-6"><label for="ImagePath">Image Path:</label></div>
@@ -18,7 +18,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6"><label for="Price">Price:</label></div>
-                            <div class="col-md-6"><input class="border border-secondary" type="text" name="Price" id="Price" placeholder=" At least 6 characters"></div>
+                            <div class="col-md-6"><input class="border border-secondary" type="text" name="Price" id="Price" placeholder=" $0.00"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-6"><label for="Price">Category:</label></div>
@@ -33,6 +33,11 @@
                             <div class="col-md-6"><input type="file" name="imageUpload" id="imageUpload"></div>
                             <div class="container">
                                 <p>Acceptable Types: JPGs, GIFs, PNGs</p>
+                            </div>
+                             <div class="container">
+                                <div class="row justify-content-center">
+                                    {{ confirmation }}
+                                </div>
                             </div>
                         </div>
                     </div>

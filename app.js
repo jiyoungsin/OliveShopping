@@ -14,7 +14,7 @@ require("dotenv").config({path:'./config/keys.env'});
 
 //import your router objects
 const userRoutes = require("./controllers/User");
-const taskRoutes = require("./controllers/Task");
+const ClerkRoutes = require("./controllers/Clerk");
 const accountRoutes = require("./controllers/Account");
 const generalRoutes = require("./controllers/General");
 
@@ -60,7 +60,7 @@ app.use((req,res,next) => {
 
 app.use("/",generalRoutes);  // mapping the generalRoutes route.
 app.use("/user",userRoutes); // mapping the userRoutes route.
-app.use("/task",taskRoutes); // mapping the taskRoutes route
+app.use("/Clerk",ClerkRoutes); // mapping the taskRoutes route
 app.use("/Registration",accountRoutes); // mapping the taskRoutes route
 
 app.use("/",(req,res)=>{

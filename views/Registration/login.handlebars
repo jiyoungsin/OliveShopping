@@ -2,13 +2,14 @@
     <div class="row justify-content-center">
         <div class="bg-white p-4 col-md-6">
             <div class="container center">
-                <img class="mb-4" src="./images/logo.png" alt="" width="72" height="72">
+                <img class="mb-1" src="./images/logo.png" alt="" width="80" height="80">
                 <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
                 <form method="POST" action="/Registration/login">
-                    <label for="userName" class="sr-only">Username:</label>
-                    <input type="text" id="userName" class="form-control" placeholder="User Name"  name="userName" required autofocus>
-                    <label for="inputPassword" class="sr-only">Password:</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"required>
+                    <label for="userName" class="sr-only">Username</label>
+                    <input type="text" id="userName" class="form-control" placeholder="User Name" id="userName" name="userName" required autofocus>
+                    <br>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" id="password" name="password"required>
                     {{#each errors}}
                         <p style="color:red;">{{msg}}</p>
                     {{/each}}
@@ -26,8 +27,6 @@
                         </div>
                         <div class="row justify-content-center">
                             <a href="/Registration/registration">Register for FREE!
-                                {{!-- <button class="p-3 btn btn-primary" value="regizster for FREE!"> register for FREE! </button> --}}
-                                {{!-- can make this into a button however the aTag looks clean... debateable  --}}
                             </a>
                         </div>
                     </div>

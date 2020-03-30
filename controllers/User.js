@@ -10,17 +10,9 @@ const { check, validationResult } = require('express-validator');
 router.use(express.static("public"));
 require("dotenv").config({path:'./config/keys.env'});
 
-// const expressSession = require('express-session');
-let user = {};
-const productModel = require("../model/product");
-const bestSellersModel = require("../model/bestSellers");
-const productCat = require("../model/productCategory");
-
-
 // ---------------- Employee Login -------------------
 // implemented but not used.
-router.get("/employeeLogin",(req,res)=>
-{
+router.get("/employeeLogin",(req,res)=> {
     res.render("User/employeeLogin",{
         title: "Login",
         pageHeader: "Login",
@@ -44,8 +36,7 @@ router.get("/logout",(req,res)=>{
 });
 
 //Route the user to their dashboard 
-router.get("/userDashboard",(req,res)=>
-{
+router.get("/userDashboard",(req,res)=>{
     Product.find(function(err,docs){ 
         let rowNeeded = [];
         let ItemsInRow = 3;
@@ -61,7 +52,14 @@ router.get("/userDashboard",(req,res)=>
 });
 
 // ---------------- Profile --------------------------
-router.get("/profile",(req,res)=>
+router.get("/profile",(req,res)=>{
+    res.render("User/profile",{
+        title: "Profile",
+        pageHeader: "Profile",
+    });
+});
+
+router.post("/profile",(req,res)=>
 {
     res.render("User/profile",{
         title: "Profile",
