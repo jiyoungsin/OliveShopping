@@ -47,11 +47,13 @@ router.get("/add-to-cart/:id", (req,res,next)=>{
 
 router.get("/checkout",(req,res)=> {
     if(!req.session.cart){ 
+        console.log("NO CART FOUND");
         return res.render("General/checkout",{ 
             products : null,
         }); 
     };
     let cart = new Cart(req.session.cart);
+    console.log("CART FOUND");
     res.render("General/checkOut", {
         products: cart.generateArray(),
         totalCost: cart.totalCost,
