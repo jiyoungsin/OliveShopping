@@ -7,33 +7,34 @@
         </div>
     </div>
 </section>
-{{#each cloths}}
-<div class="row justify-content-between m-5">
-    {{#each this}}
-    <div class="p-3 col-md-3 border border-dark bg-light ">
-        <div class="d-flex justify-content-center">
-            <img class="img-fluid" src="{{ this.ImagePath}}" alt="clothing">
-        </div>
-        <div class="container text-center">
-            <p><strong>{{ this.Title }}</strong></p>
-        </div>
-        <div class="container">
-            <p>{{ this.Desc }}</p>
-        </div>
-        <div class="container text-center">
-            <p><strong>${{ this.Price }}</strong></p>
-        </div>
 
-        <div class="row justify-content-end">
-            <a href="/add-to-cart/{{this._id}}" class="btn btn-success" role="button" value="">Add to Cart</a>
+<div class="container">
+{{#each cloths}}
+  <div class="row mb-5">
+    {{#each this}}
+    <div class="col-md-4 mb-3 mb-md-0">
+        <div class="card py-4 h-100">
+            <div class="card-body text-center">
+                <img class="img-fluid" src="{{ this.ImagePath}}" alt="clothing">
+                <div class="container text-center">
+                    <p><strong>{{ this.Title }}</strong></p>
+                </div>
+                <div class="container">
+                    <p>{{ this.Desc }}</p>
+                </div>
+                <div class="container text-center">
+                    <p><strong>${{ this.Price }}</strong></p>
+                </div>
+
+                <div class="row justify-content-end">
+                    <a href="/add-to-cart/{{this._id}}" class="btn btn-success" role="button" value="">Add to Cart</a>
+                </div>
+            </div>
         </div>
     </div>
     {{/each}}
 </div>
 {{/each}}
-
-
-
 {{!-- {{#each productsBestSeller}}
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">

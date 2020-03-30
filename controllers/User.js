@@ -4,7 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const Users = require('../model/schema');
-const Cloths = require('../model/clothes');
+const Product = require('../model/products');
 const { check, validationResult } = require('express-validator');
 
 router.use(express.static("public"));
@@ -46,7 +46,7 @@ router.get("/logout",(req,res)=>{
 //Route the user to their dashboard 
 router.get("/userDashboard",(req,res)=>
 {
-    Cloths.find(function(err,docs){ 
+    Product.find(function(err,docs){ 
         let rowNeeded = [];
         let ItemsInRow = 3;
         for(let i=0; i< docs.length; i += ItemsInRow){

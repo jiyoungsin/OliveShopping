@@ -35,15 +35,8 @@ router.post('/registration',[
     check('email','Email is Null').isLength({ min:1}),
     check('password','Password must be at least 5 chars long').isLength({ min:5})
     .matches(/\d/).withMessage('Password must contain a number')
-  ],async (req, res, next) => {
-    const {
-        fname,
-        lname,
-        email,
-        userName,
-        password,
-        gender,
-    } = req.body;
+  ],async (req, res) => {
+    const { fname, lname, email, userName, password, gender, } = req.body;
     const errors = validationResult(req);
     // if there is a error send the error
     if (!errors.isEmpty()) {
@@ -56,36 +49,25 @@ router.post('/registration',[
                 resolve(hash);
             });
         })
-        
+
         const user = new Users({
-            FirstName:fname,
-            LastName:lname,
-            Email:email,
-            Username:userName,
+            FirstName:(fname.toLowerCase()),
+            LastName:(lname.toLowerCase()),
+            Email:(email.toLowerCase()),
+            Username:(userName.toLowerCase()),
             Psw:hashedPassword,
             Gender:gender,
         });
 
-        const userSaved = await user.save()
-        .then((user)=>{
-            console.log("SADASDA");
-            let x = req.files.proPic.name;
-            console.log(x);
-
-            req.files.proPic.name = `${user._id}${req.files.proPic.name}${path.parse(req.files.proPic.name).ext}`;
-            req.files.proPic.mv(`public/uploads/${req.files.proPic.name}`);
-            Users.updateOne({_id:user._id},{
-                ProfilePic: req.files.proPic.name,
-            }); 
-        });
+        const userSaved = await user.save();
         const sgMail = require('@sendgrid/mail');
-        sgMail.setApiKey(process.env.MY_SENDGRID_KEY);
+        sgMail.setApiKey(process.env.SEND_GRID);
         msg = {
             to: `${email}`,
             from: 'jiyoungsin97@gmail.com',
-            subject: 'You Have Successfully Signed Up ',
+            subject: 'Welcome To OliveShoppnig',
             text: `Hello ${fname}`,
-            html: `<strong>Welecome to OliveShopping.</strong>`,
+            html: `<strong>Thank you for signing up at OliveShopping ${fname}.</strong>`,
         };
         await sgMail.send(msg)
         res.render("Registration/login",{
@@ -98,8 +80,7 @@ router.post('/registration',[
 });
 // ----------------Regular People Log in -----------------------------
 //Route to direct user to the login form
-router.get("/login",(req,res)=>
-{
+router.get("/login",(req,res)=>{
     if(!req.session.viewCount){
         req.session.viewCount = 1;
     }else{
@@ -126,13 +107,11 @@ router.post("/login",[
         return res.render("Registration/login",{ errors: errors.array() });
     }
     try{
-        
-        user = await Users.findOne({ Username:userNom }, function (err, user) {});
+        user = await Users.findOne({ Username:(userNom.toLowerCase()) }, function (err, user) {});
         const unhashedPassword = await bcrypt.compareSync(pwd, user.Psw); 
         // returns true if the unhashed password matches the Password given in the form
 
         if(user.Employee){
-            console.log("you are an employee!");
             res.render('Task/empLogin',{
                 Greetings : `Hi, ${user.FirstName}`,
                 title: "EmpLogin",
@@ -140,7 +119,6 @@ router.post("/login",[
             });
         }
         else{
-            console.log("you are a customer")
             if(user ===  null){
                 res.render("Registration/login",{
                     title: "Login",
@@ -164,7 +142,7 @@ router.post("/login",[
                 productsBestSeller:bestSellersModel.getAllProducts(),
                 });
             };
-        }
+        };
     }catch (err){
         console.log(err);
     }

@@ -42,6 +42,7 @@ const UserSchema = new Schema({
     },
     ProfilePic:{
         type:String,
+        required: false,
     },
     Employee:  {
         type: Boolean,

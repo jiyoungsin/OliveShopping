@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-auto-increment');
 
-const ClothesSchema = new Schema({
+const Schema = mongoose.Schema;
+
+const ProductSchema = new Schema({
     ImagePath:{
         type: String,
         required: true,
@@ -19,11 +20,23 @@ const ClothesSchema = new Schema({
         type: String,
         required: true,
     },
+    Category: {
+        type: String,
+        required: true,
+    },
+    On_Hand: {
+        type: String,
+        required: true,
+    },
+    Bestseller:{
+        type: Boolean,
+        default: false,
+    },
     DateAdded: {
         type: Date,
         default: Date.now,
     },
 });
 
-ClothesSchema.plugin(autoIncrement.plugin, 'Clothes');
-module.exports = mongoose.model('Clothes',ClothesSchema);
+ProductSchema.plugin(autoIncrement.plugin, 'Clothes');
+module.exports = mongoose.model('Products',ProductSchema);
