@@ -29,7 +29,7 @@ const UserSchema = new Schema({
         required:true,
     },
     Psw:{
-        type:String,
+        type: String,
         required:true,
     },
     Gender:{
@@ -41,8 +41,8 @@ const UserSchema = new Schema({
         default: Date.now
     },
     ProfilePic:{
-        type:String,
-        required: false,
+        type: String,
+        default : "default.png",
     },
     Employee:  {
         type: Boolean,

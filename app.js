@@ -32,8 +32,6 @@ mongoose.connect(process.env.URI, {useNewUrlParser: true, useUnifiedTopology: tr
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(fileUpload());
 
-
-
 //Handlebars middlware
 app.engine("handlebars",exphbs());
 app.set("view engine","handlebars");

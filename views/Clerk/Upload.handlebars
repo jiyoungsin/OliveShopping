@@ -1,36 +1,56 @@
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container vh-80">
+    <div class="row justify-content-center mt-5">
         <div class="bg-white p-5 col-md-7 lightBorder">
             <div class="container">
                 <form class="container mt-3" method="POST" action="/Clerk/upload" enctype="multipart/form-data">
                     <div class="justify-content-between">
                         <div class="row">
-                            <div class="col-md-6"><label for="ImagePath">Image Path:</label></div>
-                            <div class="col-md-6"><input class="border border-secondary" type="text" name="ImagePath" id="ImagePath" placeholder=" Img Path"></div>
+                            <div class="col-md-6">
+                                <label for="Title">Title:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="border border-secondary" type="text" name="Title" id="Title" placeholder=" Title">
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6"><label for="Title">Title:</label></div>
-                            <div class="col-md-6"><input class="border border-secondary" type="text" name="Title" id="Title" placeholder=" Title"></div>
+                            <div class="col-md-6">
+                                <label for="Desc">Description:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="border border-secondary" type="text" name="Desc" id="Desc" placeholder=" Description">
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6"><label for="Desc">Description:</label></div>
-                            <div class="col-md-6"><input class="border border-secondary" type="text" name="Desc" id="Desc" placeholder=" Description"></div>
+                            <div class="col-md-6">
+                                <label for="Price">Price:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="border border-secondary" type="text" name="Price" id="Price" placeholder=" $0.00">
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6"><label for="Price">Price:</label></div>
-                            <div class="col-md-6"><input class="border border-secondary" type="text" name="Price" id="Price" placeholder=" $0.00"></div>
+                            <div class="col-md-6">
+                                <label for="Price">Category:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="border border-secondary" type="text" name="Category" id="Category" placeholder=" Category">
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6"><label for="Price">Category:</label></div>
-                            <div class="col-md-6"><input class="border border-secondary" type="text" name="Category" id="Category" placeholder=" Category"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6"><label for="On_Hand">Quantity:</label></div>
-                            <div class="col-md-6"><input class="border border-secondary" type="text" name="On_Hand" id="On_Hand" placeholder=" Quantity"></div>
+                            <div class="col-md-6">
+                                <label for="On_Hand">Quantity:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="border border-secondary" type="text" name="On_Hand" id="On_Hand" placeholder=" Quantity">
+                            </div>
                         </div>
                          <div class="row">
-                            <div class="col-md-6"><label for="imageUpload">File Upload:</label></div>
-                            <div class="col-md-6"><input type="file" name="imageUpload" id="imageUpload"></div>
+                            <div class="col-md-6">
+                                <label for="img">File Upload:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="file" name="img" id="img">
+                            </div>
                             <div class="container">
                                 <p>Acceptable Types: JPGs, GIFs, PNGs</p>
                             </div>

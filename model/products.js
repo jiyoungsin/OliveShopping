@@ -6,7 +6,6 @@ const Schema = mongoose.Schema;
 const ProductSchema = new Schema({
     ImagePath:{
         type: String,
-        required: true,
     },
     Title:{
         type: String,

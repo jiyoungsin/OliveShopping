@@ -1,16 +1,15 @@
-<div class="container h1" style="color:white">All Products</div>
+<div class="container h1" style="color:white">Best Sellers</div>
 <section class="on-sale">
     <div class="container">
         <div class="title-box">
-            <h2>On&nbsp;Sale</h2>
+            <h2>Hot&nbsp;Hot</h2>
         </div>
     </div>
 </section>
 <div class="container">
-{{#each cloths}}
   <div class="row mb-5">
-    {{#each this}}
-    <div class="col-md-4 mb-md-3">
+    {{#each cloths}}
+    <div class="col-md-4 mb-3 mb-md-3">
         <div class="card py-4 h-100">
             <div class="card-body text-center">
                 <img class="img-fluid" src="../uploads/{{ this.ImagePath}}" alt="clothing">
@@ -32,4 +31,3 @@
     </div>
     {{/each}}
 </div>
-{{/each}}

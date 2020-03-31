@@ -18,8 +18,6 @@ router.get("/",(req,res)=>{
     res.render("General/index",{
         title: "Home",
         pageHeader: "Home",
-        productCat : productCat.getAllProducts(),
-        productsBestSeller:bestSellersModel.getAllProducts(),
     });
 });
 

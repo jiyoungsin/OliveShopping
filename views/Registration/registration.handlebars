@@ -6,7 +6,7 @@
                     <div class="col-3"><img class="img-fluid"src="./images/logo.png" alt="My Logo"></div>
                     <div class="col-9 d-flex align-items-end"><h2>Sign Up</h2></div>
                 </div>
-                <form class="container mt-3" method="POST" action="/Registration/registration">
+                <form class="container mt-3" method="POST" action="/Registration/registration" enctype="multipart/form-data">
                         <div class="justify-content-between">
                             <div class="row">
                                 <div class="col-md-6"><label for="fname">First Name:</label></div>
@@ -43,6 +43,8 @@
                                     <label for="other"> Other</label>
                                 </div>  
                             </div>
+                            <label for="img">Select image:</label>
+                            <input type="file" id="img" name="img" accept="image/*" required="">
                             <div class="container m-3">
                                 <div class="row justify-content-center mb-3">
                                     <i class="lightText">Passwords must consist of at least 6 characters and a number.</i>

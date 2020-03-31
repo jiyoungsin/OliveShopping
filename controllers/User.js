@@ -50,12 +50,33 @@ router.get("/userDashboard",(req,res)=>{
         });
     });
 });
+// Route the user to the bestseller dashboard
+router.get("/bestSellerDashboard",(req,res)=>{
+    Product.find(function(err,docs){ 
+        let rowNeeded = [];
+        for( i=0; i< docs.length; i++){
+            if(docs[i].Bestseller){
+                rowNeeded.push(docs[i]);
+            }
+        }
+        res.render("User/bestSellerDashboard",{
+            title: "Best Sellers",
+            pageHeader: "Best Sellers",
+            cloths: rowNeeded,
+        });
+    });
+});
 
 // ---------------- Profile --------------------------
 router.get("/profile",(req,res)=>{
-    res.render("User/profile",{
-        title: "Profile",
-        pageHeader: "Profile",
+    Users.find(function(err,docs){ 
+        let x = {};
+        x= docs[0];
+        res.render("User/profile",{
+            title: "Profile",
+            pageHeader: "Profile",
+            user: x,
+        });
     });
 });
 
@@ -65,6 +86,27 @@ router.post("/profile",(req,res)=>
         title: "Profile",
         pageHeader: "Profile",
     });
+});
+
+
+router.post("/UpdateProfile",(req,res)=>
+{
+    console.log();
+    console.log(req.files.img.name);
+    console.log(req.files.img.mimetype);
+    if(req.files.img.mimetype == "image/jpeg"){
+        console.log(req.files.img.mimetype == "image/jpeg");
+    }
+    /* 
+    req.files.img.name = `${user._id}${path.parse(req.files.img.name).ext}`
+            req.files.img.mv(`public/uploads/${req.files.img.name}`)
+            Users.updateOne({_id: user._id},{
+                ProfilePic: req.files.img.name,
+            })
+            .then(()=>{ console.log("UDATED PROFILE PICTURE"); })
+            .catch(()=>{ console.log("DIDN'T UPDATE PROFILE PICTURE."); });
+     */
+    //if(jpgs,gifs,pngs)
 });
 
 module.exports=router;

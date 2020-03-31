@@ -2,13 +2,11 @@ const bcrypt = require('bcrypt');
 const express = require('express')
 const mongoose = require('mongoose');
 const Users = require('../model/schema');
-const fileUpload = require('express-fileupload');
 const path = require('path');
 const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
 router.use(express.static("public"));
-router.use(fileUpload());
 require("dotenv").config({path:'./config/keys.env'});
 let user = {};
 const bestSellersModel = require("../model/bestSellers");
@@ -59,7 +57,16 @@ router.post('/registration',[
             Gender:gender,
         });
 
-        const userSaved = await user.save();
+        const userSaved = await user.save()
+        .then((user)=>{
+            req.files.img.name = `${user._id}${path.parse(req.files.img.name).ext}`
+            req.files.img.mv(`public/uploads/${req.files.img.name}`)
+            Users.updateOne({_id: user._id},{
+                ProfilePic: req.files.img.name,
+            })
+            .then(()=>{ console.log("UDATED PROFILE PICTURE"); })
+            .catch(()=>{ console.log("DIDN'T UPDATE PROFILE PICTURE."); });
+        });
         const sgMail = require('@sendgrid/mail');
         sgMail.setApiKey(process.env.SEND_GRID);
         msg = {
@@ -134,12 +141,10 @@ router.post("/login",[
                 });
             }else{
                 res.render('General/index',{
-                Greetings : `Hi, ${user.FirstName}`,
+                Greetings : `Welcome to OliveShopping, ${user.FirstName}`,
                 title: "Home",
                 pageHeader: "Home", 
                 errors: errors.array(),
-                productCat : productCat.getAllProducts(),
-                productsBestSeller:bestSellersModel.getAllProducts(),
                 });
             };
         };
