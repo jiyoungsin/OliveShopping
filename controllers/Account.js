@@ -119,6 +119,7 @@ router.post("/login",[
         // returns true if the unhashed password matches the Password given in the form
 
         if(user.Employee){
+            req.session.userInfo = user;
             res.render('Clerk/empLogin',{
                 Greetings : `Hi, ${user.FirstName}`,
                 title: "EmpLogin",
@@ -152,7 +153,6 @@ router.post("/login",[
         console.log(err);
     }
 });
-
 
 
 

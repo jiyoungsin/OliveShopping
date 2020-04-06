@@ -29,5 +29,8 @@
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-data-seed": "^2.1.6",
     "mongoose-unique-validator": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

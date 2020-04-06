@@ -11,13 +11,22 @@ router.use(express.static("public"));
 
 // this is needed?
 mongoose.createConnection(process.env.URI);
-const Product = require('../model/prod');
+//const Product = require('../model/prod');
 
 //Route to direct user to home page
 router.get("/",(req,res)=>{
-    res.render("General/index",{
-        title: "Home",
-        pageHeader: "Home",
+    Products.find(function(err,docs){ 
+        let rowNeeded = [];
+        for( i=0; i< docs.length; i++){
+            if(docs[i].Bestseller){
+                rowNeeded.push(docs[i]);
+            }
+        }
+        res.render("General/index",{
+            title: "Home",
+            pageHeader: "Home",
+            cloths: rowNeeded,
+        });
     });
 });
 

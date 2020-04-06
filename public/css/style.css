@@ -105,6 +105,9 @@ input[class="delButtons"]
 
 body{
     background-color:#232b2b;
+    /* height: 100vh;
+    width: 100vw;
+   position: relative; */
 }
 
 .navbar-toggler{

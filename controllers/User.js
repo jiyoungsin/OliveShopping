@@ -32,7 +32,8 @@ router.post("/employeeLogin",[
 
 // ---------------- Log Out --------------------------
 router.get("/logout",(req,res)=>{
-    res.redirect("/User/login");
+    req.session.destroy();
+    res.redirect("/Registration/login");
 });
 
 //Route the user to their dashboard 
@@ -44,6 +45,40 @@ router.get("/userDashboard",(req,res)=>{
             rowNeeded.push(docs.slice(i, i + ItemsInRow)); 
         }
         res.render("User/userDashboard",{
+            title: "Home",
+            pageHeader: "Home",
+            cloths: rowNeeded,
+        });
+    });
+});
+
+router.get("/pantsDashboard",(req,res)=>{
+    Product.find(function(err,docs){ 
+        let rowNeeded = [];
+        let ItemsInRow = 3;
+        for(let i=0; i< docs.length; i++){
+            if(docs[i].Category === 'PANTS'){
+                rowNeeded.push(docs[i]); 
+            };
+        }
+        res.render("User/bestSellerDashboard",{
+            title: "Home",
+            pageHeader: "Home",
+            cloths: rowNeeded,
+        });
+    });
+});
+
+router.get("/shirtDashboard",(req,res)=>{
+    Product.find(function(err,docs){ 
+        let rowNeeded = [];
+        let ItemsInRow = 3;
+        for(let i=0; i< docs.length; i++){
+            if(docs[i].Category === 'SHIRTS'){
+                rowNeeded.push(docs[i]); 
+            };
+        }
+        res.render("User/bestSellerDashboard",{
             title: "Home",
             pageHeader: "Home",
             cloths: rowNeeded,
@@ -66,7 +101,57 @@ router.get("/bestSellerDashboard",(req,res)=>{
         });
     });
 });
-
+// route for when the user want to see female shirts
+router.get("/wshirtDashboard",(req,res)=>{
+    Product.find(function(err,docs){ 
+        let rowNeeded = [];
+        let ItemsInRow = 3;
+        for(let i=0; i< docs.length; i++){
+            if(docs[i].Category === 'WSHIRTS'){
+                rowNeeded.push(docs[i]); 
+            };
+        }
+        res.render("User/bestSellerDashboard",{
+            title: "Home",
+            pageHeader: "Home",
+            cloths: rowNeeded,
+        });
+    });
+});
+// route for when the user wants to see female pants.
+router.get("/wpantsDashboard",(req,res)=>{
+    Product.find(function(err,docs){ 
+        let rowNeeded = [];
+        let ItemsInRow = 3;
+        for(let i=0; i< docs.length; i++){
+            if(docs[i].Category === 'WPANTS'){
+                rowNeeded.push(docs[i]); 
+            };
+        }
+        res.render("User/bestSellerDashboard",{
+            title: "Home",
+            pageHeader: "Home",
+            cloths: rowNeeded,
+        });
+    });
+});
+// route for all the shoes
+router.get("/shoesDashboard",(req,res)=>{
+    Product.find(function(err,docs){ 
+        let rowNeeded = [];
+        let ItemsInRow = 3;
+        for(let i=0; i< docs.length; i++){
+            if(docs[i].Category === 'SHOES'){
+                rowNeeded.push(docs[i]); 
+            };
+        }
+        res.render("User/bestSellerDashboard",{
+            title: "Home",
+            pageHeader: "Home",
+            cloths: rowNeeded,
+        });
+    });
+});
 // ---------------- Profile --------------------------
 router.get("/profile",(req,res)=>{
     Users.find(function(err,docs){ 
