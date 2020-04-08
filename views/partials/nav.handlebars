@@ -1,58 +1,55 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#0e1111">
-    <a class="h2 navbar-brand" href="/" style="color:orange">OliveShopping</a>
+    <a class="h2 navbar-brand" href="/" style="color:white">OliveShopping</a>
     <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="border border-white navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex-direction:row-reverse;">
         <div class="d-flex justify-content-end">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" style="color:orange" href="/Registration/registration">SignUp<span class="sr-only">(current)</span></a></li>
-                <li class="nav-item active"><a class="nav-link" style="color:orange" href="/Registration/login">Login<span class="sr-only">(current)</span></a></li>
-                <li class="nav-item active"><a class="nav-link" style="color:orange" href="/User/userDashboard">DashBoard<span class="sr-only">(current)</span></a></li>
-                <li class="nav-item active"><a class="nav-link" style="color:orange" href="/User/logout">Logout<span class="sr-only">(current)</span></a></li>
-                <li class="nav-item active"><a class="nav-link" style="color:orange" href="/User/profile">Profile<span class="sr-only">(current)</span></a></li>
-                <li class="nav-item active"><a class="nav-link" style="color:orange" href="/Clerk/Upload">Upload<span class="sr-only">(current)</span></a></li>
-                <div class="container-fluid col-md-6">
-                    <li>
-                        <a class="nav-link" href="/checkout" style="color:orange">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart 
-                            <span class="badge">{{session.cart.totalQty}}</span>
-                        </a>
-                    </li>
+            <div class="container">
+                <a class="nav-item nav-link navbar-color-toggler" href="/User/userDashboard">All<span class="sr-only">(current)</span></a>
+            </div>
+            <div class="dropdown mr-2 ml-2">
+                <button type="button" class="btn dropdown-toggle navbar-color-toggler" data-toggle="dropdown">
+                    Mens
+                </button>
+                <div class="dropdown-menu">
+                    <a class="nav-link" style="color:black" href="/User/shirtDashboard">Shirts<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" style="color:black" href="/User/pantsDashboard">Pants<span class="sr-only">(current)</span></a>
                 </div>
-            </ul>
+            </div>
+            <div class="dropdown">
+                <button type="button" class="btn dropdown-toggle navbar-color-toggler" data-toggle="dropdown">
+                    Womens
+                </button>
+                <div class="dropdown-menu">
+                    <a class="nav-link" style="color:black" href="/User/wshirtDashboard">Shirts<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" style="color:black" href="/User/wpantsDashboard">Pants<span class="sr-only">(current)</span></a>
+
+                </div>
+            </div>
+            <div class="dropdown">
+                <button type="button" class="btn dropdown-toggle navbar-color-toggler" data-toggle="dropdown">
+                    Account
+                </button>
+                <div class="dropdown-menu">
+                    <a class="nav-link" style="color:black" href="/User/profile">Profile<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" style="color:black" href="/Registration/registration">SignUp<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" style="color:black" href="/User/logout">Logout<span class="sr-only">(current)</span></a>
+                </div>
+            </div>
+            <div class="container">
+                <a class="nav-item nav-link navbar-color-toggler" href="/User/bestSellerDashboard">BestSellers<span class="sr-only">(current)</span></a>
+            </div>
+            <div class="container col-md-4">
+                <li>
+                    <a class="nav-link" href="/checkout" style="color:white">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart 
+                        <span class="badge">{{session.cart.totalQty}}</span>
+                    </a>
+                </li>
+            </div>
         </div>
     </div>
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavAltMarkup">
-    <div class="navbar-nav navbar-right">
-        <div class="container">
-            <a class="nav-item nav-link active" href="/User/userDashboard">All<span class="sr-only">(current)</span></a>
-        </div>
-        <div class="container">
-            <a class="nav-item nav-link active" href="/User/pantsDashboard">Pants<span class="sr-only">(current)</span></a>
-        </div>    
-        <div class="container">
-            <a class="nav-item nav-link active" href="/User/shirtDashboard">Shirts<span class="sr-only">(current)</span></a>
-        </div>
-        <div class="container">
-            <a class="nav-item nav-link active" href="/User/wshirtDashboard">WShirts<span class="sr-only">(current)</span></a>
-        </div>
-        <div class="container">
-            <a class="nav-item nav-link active" href="/User/wpantsDashboard">WPants<span class="sr-only">(current)</span></a>
-        </div>
-        <div class="container">
-            <a class="nav-item nav-link active" href="/User/shoesDashboard">Shoes<span class="sr-only">(current)</span></a>
-        </div>
-        <div class="container">
-            <a class="nav-item nav-link active" href="/User/bestSellerDashboard">BestSellers<span class="sr-only">(current)</span></a>
-        </div>
-    </div>
-  </div>
-</nav>

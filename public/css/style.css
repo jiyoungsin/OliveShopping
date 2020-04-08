@@ -114,7 +114,19 @@ body{
     background-color: white;
 }
 
-
 .computerView{
     display:flex;
 }
+
+.navbar-color-toggler{
+    color: white;
+    background-color: 232b2b;
+}
+.navbar-color-toggler:hover{
+    color: orange;
+};
+.navbar-color-toggler:active{
+    color: orange;
+};
+/* 
+color: orange; */

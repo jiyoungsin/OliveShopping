@@ -37,7 +37,7 @@ router.get("/about",(req,res)=>{
 
 router.get("/add-to-cart/:id", (req,res,next)=>{
     let prodID = req.params.id;
-    let cart = new Cart(req.session.cart ? req.session.cart : {item: {}});
+    let cart = new Cart(req.session.cart ? req.session.cart : {});
 
     Products.findById(prodID, function (err,product){
         if(err){
@@ -60,7 +60,6 @@ router.get("/checkout",(req,res)=> {
         }); 
     };
     let cart = new Cart(req.session.cart);
-    console.log("CART FOUND");
     res.render("General/checkOut", {
         products: cart.generateArray(),
         totalCost: cart.totalCost,

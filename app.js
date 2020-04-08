@@ -50,7 +50,7 @@ app.use(express.static("public"));
 
 app.use((req,res,next) => { 
     //res.locals.login = req.isAuthenticated(),
-    res.locals.session = req.session;
+      res.locals.session = req.session;
     // needed?
     // res.locals.user = req.session.userInfo;
     next();

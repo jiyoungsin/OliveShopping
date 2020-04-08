@@ -10,7 +10,7 @@
                     <ul class="list-group">
                         {{#each products}}
                             <li class="list-group-item">
-                                <img class="img-rounded" src="{{this.item.ImagePath}}" alt="Desired Product" style="width:80px;height:100px">
+                                <img class="img-rounded" src="../uploads/{{this.item.ImagePath}}" alt="Desired Product" style="width:80px;height:100px">
                                 <span class="badge">{{this.qty}}</span>
                                 <strong>{{this.item.Title}}</strong>
                                 <span class="label label-success">${{this.Price}}</span>
