@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router();
 const mongoose = require('mongoose');
 const session = require('express-session');
-const bestSellersModel = require("../model/bestSellers");
-const productCat = require("../model/productCategory");
+//const bestSellersModel = require("../model/bestSellers");
+//const productCat = require("../model/productCategory");
 const Products = require('../model/products');
 const Cart = require('../model/cart');
 
@@ -60,7 +60,7 @@ router.get("/checkout",(req,res)=> {
         }); 
     };
     let cart = new Cart(req.session.cart);
-    res.render("General/checkOut", {
+    res.render("General/checkout", {
         products: cart.generateArray(),
         totalCost: cart.totalCost,
     });
