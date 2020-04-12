@@ -25,86 +25,20 @@
             </ul>
         </div>
     </div>
-{{!-- <div class="container-fluid bg-light">
-    <div class="container text-center">
-        <h2>Shopping Cart</h2>
-    </div>
-    {{# if products}}
-    <div class="conatiner">
-        <div class="row justify-content-center pb-5">
-            <div class="col-sm-6 col-md-6 bg-light border boder-dark">
-                <div class="row justify-content-center p-5">
-                    <ul class="list-group">
-                        {{#each products}}
-                            <li class="list-group-item">
-                                <img class="img-rounded" src="../uploads/{{this.item.ImagePath}}" alt="Desired Product" style="width:80px;height:100px">
-                                <span class="badge">{{this.qty}}</span>
-                                <strong>{{this.item.Title}}</strong>
-                                <span class="label label-success">${{this.Price}}</span>
-                                <div class="btn-group bg-light">
-                                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Reduce By 1</a></li>
-                                        <li><a href="#">Remove All</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        {{/each}}
-                    </ul>
-                </div>
-                <div class="row justify-content-end mr-5">
-                    <strong>Total: ${{totalCost}}</strong>
-                </div>
+{{ else }}
+    <div class="pt-5 pb-5">
+        <div class="row bg-light justify-content-center p-5">
+            <div class="col-10 d-flex flex-column text-center w-50">
+                <strong>No Items In Cart</strong>
                 <hr>
-                <div class="row justify-content-end mr-5 pb-3">
-                    <button type="button" class="btn btn-success">Checkout</button>
-                </div>
+                <strong>Total: $0.00</strong>
             </div>
         </div>
-    </div> --}}
-
-{{ else }}
-    <div class="conatiner border boder-dark">
-        <div class="row justify-content-center">
-            <strong>No Items In Cart</strong>
-        </div>
-        <hr>
-        <div class="row justify-content-end mr-5 pb-3">
-                <strong>Total: $0.00</strong>
+        <div class="row bg-light justify-content-center p-5">
+            <a href="/User/userDashboard" class="mr-3 btn btn-success float-right" role="button" value="">Go Shopping!</a>
         </div>
     </div>
 {{/if}}
-<br>
-<br>
-<br>
-<br>
-<div class="row bg-light">
-    <div class="col-4 p-5">
-        <img class="w-100 img-rounded" src="https://picsum.photos/200/300" alt="Desired Product" style="width:200px;height:300px">
-    </div>
-    <div class="col-8 p-5 d-flex flex-column">
-        <div class="flex-grow-1">
-            <h3>TITLE OF PRODUCT</h3>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Facilis at provident non quasi magnam quibusdam, mollitia
-                rem explicabo voluptatibus eius incidunt architecto assumenda 
-                voluptate quos cum quaerat exercitationem aliquam saepe!
-            </p>
-            <h5>
-                Rating
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-            </h5>
-        </div>
-        <div>
-            {{!-- <a href="/add-to-cart/{{this._id}}" class="btn btn-success" role="button" value="">Add to Cart</a> --}}
-            <a href="#" class="btn btn-success float-right" role="button" value="">Add to Cart</a>
-            <a href="#" class="mr-3 btn btn-secondary float-right" role="button" value="">Go Back</a>
-        </div>
-    </div>
-</div>
+
+
 

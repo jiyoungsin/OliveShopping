@@ -98,6 +98,7 @@ router.get("/profile",(req,res)=>{
             title: "Profile",
             pageHeader: "Profile",
             user: user,
+            message : "",
         });
     });
 });
@@ -127,6 +128,7 @@ router.post("/UpdateProfile",(req,res)=> {
     res.render("User/profile",{
         title: "Profile",
         pageHeader: "Profile",
+        user: user,
         message: "UDATED PROFILE PICTURE",
     });
 });

@@ -61,8 +61,17 @@ router.get("/checkout",(req,res)=> {
     };
     let cart = new Cart(req.session.cart);
     res.render("General/checkout", {
+        title: "Checkout",
+        pageHeader: "Checkout",
         products: cart.generateArray(),
         totalCost: cart.totalCost,
+    });
+});
+
+router.get("/productDesc",(req,res)=> {
+    res.render("General/productDesc", {
+        title: `Product IDNUM Desc`,
+        pageHeader: "PRODUCT NAME",
     });
 });
 
