@@ -7,50 +7,36 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex-direction:row-reverse;">
         <div class="d-flex justify-content-end">
             <div class="container pr-1">
-                <a class="nav-item nav-link navbar-color-toggler" href="/User/bestSellerDashboard">BestSellers<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link navbar-color-toggler" href="/">Home<span class="sr-only">(current)</span></a>
             </div>
-            <div class="container pl-1 pr-1">
-                <a class="nav-item nav-link navbar-color-toggler" href="/User/userDashboard">All<span class="sr-only">(current)</span></a>
+            <div class="container pr-1">
+                <a class="nav-item nav-link navbar-color-toggler" href="/User/userDashboard">Products<span class="sr-only">(current)</span></a>
             </div>
-            <div class="dropdown mr-2 ml-2">
-                <button type="button" class="btn dropdown-toggle navbar-color-toggler" data-toggle="dropdown">
-                    Mens
-                </button>
-                <div class="dropdown-menu">
-                    <a class="nav-link" style="color:black" href="/User/shirtDashboard">Shirts<span class="sr-only">(current)</span></a>
-                    <a class="nav-link" style="color:black" href="/User/pantsDashboard">Pants<span class="sr-only">(current)</span></a>
-                </div>
+             <div class="container pr-1">
+                <a class="nav-item nav-link navbar-color-toggler" href="/Registration/login">Login<span class="sr-only">(current)</span></a>
             </div>
-            <div class="dropdown">
-                <button type="button" class="btn dropdown-toggle navbar-color-toggler" data-toggle="dropdown">
-                    Womens
-                </button>
-                <div class="dropdown-menu">
-                    <a class="nav-link" style="color:black" href="/User/wshirtDashboard">Shirts<span class="sr-only">(current)</span></a>
-                    <a class="nav-link" style="color:black" href="/User/wpantsDashboard">Pants<span class="sr-only">(current)</span></a>
-
-                </div>
-            </div>
-            <div class="dropdown">
-                <button type="button" class="btn dropdown-toggle navbar-color-toggler" data-toggle="dropdown">
-                    Account
-                </button>
-                <div class="dropdown-menu">
-                    <a class="nav-link" style="color:black" href="/Registration/registration">SignUp<span class="sr-only">(current)</span></a>
-                    <a class="nav-link" style="color:black" href="/Registration/login">Login<span class="sr-only">(current)</span></a>
-                    <a class="nav-link" style="color:black" href="/User/profile">Profile<span class="sr-only">(current)</span></a>
-                    <a class="nav-link" style="color:black" href="/User/logout">Logout<span class="sr-only">(current)</span></a>
-                </div>
+             <div class="container pr-1">
+                <a class="nav-item nav-link navbar-color-toggler" href="/User/userDashboard">Dashboard<span class="sr-only">(current)</span></a>
             </div>
             <div class="container col-md-4">
-                <li>
-                    <a class="nav-link" href="/checkout" style="color:white">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart 
-                        <span class="badge">{{session.cart.totalQty}}</span>
-                    </a>
-                </li>
+                <a class="nav-link" href="/checkout" style="color:white">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart 
+                    <span class="badge">{{session.cart.totalQty}}</span>
+                </a>
             </div>
         </div>
     </div>
 </nav>
 
+{{!-- 
+<div class="dropdown">
+    <button type="button" class="btn dropdown-toggle navbar-color-toggler" data-toggle="dropdown">
+        Account
+    </button>
+    <div class="dropdown-menu">
+        <a class="nav-link" style="color:black" href="/Registration/registration">SignUp<span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="color:black" href="/Registration/login">Login<span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="color:black" href="/User/profile">Profile<span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="color:black" href="/User/logout">Logout<span class="sr-only">(current)</span></a>
+    </div>
+</div> --}}

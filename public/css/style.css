@@ -128,3 +128,13 @@ body{
 .navbar-color-toggler:active{
     color: orange;
 };
+.navbar-color-toggler{
+    color: black;
+    background-color: 232b2b;
+}
+.navbar-color-toggler:hover{
+    color: orange;
+};
+.navbar-color-toggler:active{
+    color: orange;
+};

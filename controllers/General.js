@@ -48,7 +48,7 @@ router.get("/add-to-cart/:id", (req,res,next)=>{
         };
         cart.add(product, product.id);
         req.session.cart = cart;
-        res.redirect("/");
+        res.redirect("/User/userDashboard");
     });
 });
 

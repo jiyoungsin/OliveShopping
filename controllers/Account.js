@@ -1,8 +1,8 @@
+const path = require('path');
 const bcrypt = require('bcrypt');
 const express = require('express')
 const mongoose = require('mongoose');
 const Users = require('../model/schema');
-const path = require('path');
 const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
@@ -139,6 +139,7 @@ router.post("/login",[
                     errorz: "Invaild Username Or Password",
                 });
             }else{
+                req.session.userInfo = user;
                 res.render('General/index',{
                 Greetings : `Welcome to OliveShopping, ${user.FirstName}`,
                 title: "Home",
