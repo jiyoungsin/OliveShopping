@@ -129,7 +129,6 @@ router.post("/UpdateProdPic/:id",isAdmin,(req,res)=> {
         });
     })
     .catch(()=>{ console.log("DIDN'T UPDATE PRODUCT PICTURE."); });
-        
     });
 });
 

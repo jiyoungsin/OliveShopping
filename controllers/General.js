@@ -55,6 +55,7 @@ router.get("/productDesc/:id",(req,res)=> {
             pageHeader: `${product.Title}`,
             image: `${product.ImagePath}`,
             desc: `${product.Desc}`,
+            Price: `${product.Price}`,
             _id: prodID,
         });
     });
