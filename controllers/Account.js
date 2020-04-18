@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const express = require('express')
 const mongoose = require('mongoose');
 const Users = require('../model/schema');
+const isLoggedIn = require('../middleware/auth');
+
 const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
@@ -13,8 +15,7 @@ const saltRounds = 10;
 
 // ---------------- Regular User Registration -------------------
 
-router.get("/registration",(req,res)=>
-{
+router.get("/registration",(req,res)=>{
     res.render("Registration/registration",{
         title: "Customer Registration",
         pageHeader: "Registration",
@@ -36,7 +37,8 @@ router.post('/registration',[
     const errors = validationResult(req);
     // if there is a error send the error
     if (!errors.isEmpty()) {
-        return res.render("Registration/registration",{ errors: errors.array() });
+        return res.render("Registration/registration",{ 
+            errors: errors.array(),fname,lname,email,userName,gender, });
     }
     try {
         const hashedPassword = await new Promise((resolve, reject) => {
@@ -45,7 +47,6 @@ router.post('/registration',[
                 resolve(hash);
             });
         })
-
         const user = new Users({
             FirstName:(fname.toLowerCase()),
             LastName:(lname.toLowerCase()),
@@ -86,15 +87,9 @@ router.post('/registration',[
 // ----------------Regular People Log in -----------------------------
 //Route to direct user to the login form
 router.get("/login",(req,res)=>{
-    if(!req.session.viewCount){
-        req.session.viewCount = 1;
-    }else{
-        req.session.viewCount += 1;
-    }
     res.render("Registration/login",{
         title: "Login",
         pageHeader: "Login",
-        viewCount : req.session.viewCount,
     });
 });
 
@@ -140,10 +135,11 @@ router.post("/login",[
                 });
             }else{
                 req.session.userInfo = user;
-                res.render('General/index',{
+                res.render('User/Profile',{
                 Greetings : `Welcome to OliveShopping, ${user.FirstName}`,
-                title: "Home",
-                pageHeader: "Home", 
+                title: "User Profile",
+                pageHeader: "User Profile", 
+                user : req.session.userInfo,
                 errors: errors.array(),
                 });
             };

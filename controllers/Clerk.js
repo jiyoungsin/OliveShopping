@@ -1,25 +1,17 @@
 
 /*********************Task ROUTES***************************/
 const express = require('express')
-const router = express.Router();
-const Product = require('../model/products');
-const Cart = require('../model/cart');
 const path = require('path');
-
+const router = express.Router();
+const Cart = require('../model/cart');
+const Product = require('../model/products');
+const isAdmin = require('../middleware/isAdmin');
 
 router.use(express.static("public"));
 //Route to direct use to Add Task form
 router.get("/add",(req,res)=> {
     res.render("Clerk/taskAddForm");
 });
-
-//Route to direct user to edit task form
- // TO DO ... //
-/*
-router.get();
-router.post();
-*/
-
 
 //Route to direct user to the checkout Page
 router.get("/checkout",(req,res)=> {
@@ -36,7 +28,7 @@ router.get("/checkout",(req,res)=> {
 });
 
 //Route to process user's request when the user wants to submits a Product
-router.get('/Upload',(req,res)=>{
+router.get('/Upload',isAdmin,(req,res)=>{
     res.render("Clerk/Upload",{
         title: "Upload",
         pageHeader: "Upload",
@@ -68,6 +60,77 @@ router.post('/Upload',async (req, res) => {
         console.error(err);
     };
 });
+// Edit a Product
+router.get('/edit',isAdmin,(req,res)=>{
+    Product.find(function(err,docs){ 
+        let rowNeeded = [];
+        for(let i=0; i< docs.length; i++){
+                rowNeeded.push(docs[i]); 
+        }
+        res.render("Clerk/Edit",{
+            title: "Edit Product",
+            pageHeader: "Edit Product",
+            cloths: rowNeeded,
+        });
+    });
+});
 
+
+router.get("/edit/:productType",isAdmin,(req,res)=>{
+    let prodType = req.params.productType;
+    Product.find(function(err,docs){ 
+        let rowNeeded = [];
+        let ItemsInRow = 3;
+        if(prodType === "BESTSELLERS" ){
+            for( i=0; i< docs.length; i++){
+                if(docs[i].Bestseller){
+                    rowNeeded.push(docs[i]);
+                }
+            } 
+        }else{
+            for(let i=0; i< docs.length; i++){
+                if(docs[i].Category === prodType){
+                    rowNeeded.push(docs[i]); 
+                };
+            }
+        }
+        res.render("Clerk/Edit",{
+            title: "Edit Product",
+            pageHeader: "Edit Product",
+            cloths: rowNeeded,
+        });
+    });
+});
+router.post("/UpdateProdPic/:id",isAdmin,(req,res)=> {
+    if(req.files.img.mimetype == "image/jpeg"){
+        console.log(req.files.img.mimetype == "image/jpeg");
+    }
+    let user = req.session.userInfo;
+    let prodID= req.params.id;
+    Product.findById(prodID, function (err,products){
+    
+        req.files.img.name = `prod_${products._id}${path.parse(req.files.img.name).ext}`
+        req.files.img.mv(`public/uploads/${req.files.img.name}`)
+        Product.updateOne({_id: products._id},{
+            ImagePath: req.files.img.name,
+        })
+        .then(()=>{ 
+            console.log("UDATED PRODUCT PICTURE"); 
+            Product.find(function(err,docs){ 
+            let rowNeeded = [];
+            for(let i=0; i< docs.length; i++){
+                    rowNeeded.push(docs[i]); 
+            }
+            res.render("Clerk/Edit",{
+                title: "Edit Product",
+                pageHeader: "Edit Product",
+                cloths: rowNeeded,
+            });
+        });
+    })
+    .catch(()=>{ console.log("DIDN'T UPDATE PRODUCT PICTURE."); });
+        
+    });
+});
 
 module.exports=router;

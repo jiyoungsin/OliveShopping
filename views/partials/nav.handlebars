@@ -12,21 +12,13 @@
             <div class="container pr-1">
                 <a class="nav-item nav-link navbar-color-toggler" href="/User/userDashboard">Products<span class="sr-only">(current)</span></a>
             </div>
-            <div class="dropdown">
-                <button type="button" class="btn dropdown-toggle navbar-color-toggler" data-toggle="dropdown">
-                    Account
-                </button>
-                <div class="dropdown-menu">
-                    <a class="nav-link" style="color:black" href="/Registration/registration">SignUp<span class="sr-only">(current)</span></a>
-                    <a class="nav-link" style="color:black" href="/Registration/login">Login<span class="sr-only">(current)</span></a>
-                    <a class="nav-link" style="color:black" href="/User/profile">Profile<span class="sr-only">(current)</span></a>
-                    <a class="nav-link" style="color:black" href="/User/logout">Logout<span class="sr-only">(current)</span></a>
-                </div>
+            <div class="container pr-1">
+                <a class="nav-item nav-link navbar-color-toggler" href="/Registration/login">Login<span class="sr-only">(current)</span></a>
             </div>
              <div class="container pr-1">
-                <a class="nav-item nav-link navbar-color-toggler" href="/User/userDashboard">Dashboard<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link navbar-color-toggler" href="/User/Profile">Profile<span class="sr-only">(current)</span></a>
             </div>
-            <div class="container col-md-4">
+            <div class="container col-md-6">
                 <a class="nav-link" href="/checkout" style="color:white">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart 
                     <span class="badge">{{session.cart.totalQty}}</span>

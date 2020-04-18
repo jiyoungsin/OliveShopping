@@ -1,0 +1,88 @@
+<div class="row bg-light">
+    <div class="col-4 p-5 d-flex justify-content-center flex-column">
+        <img class="w-100 img-rounded" src="../uploads/{{ ImagePath }}" alt="Desired Product" style="width:200px;height:300px">
+        <form method="POST" action="/Clerk/UpdateProdPic/{{ _id }}" enctype="multipart/form-data">
+            <label for="img">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*" required="">
+            <div class="container col-md-12 mt-3 mb-3">
+                <div class="row justify-content-end">
+                    <button type="submit" class="btn btn-primary">Upload Picture</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-8 p-5 d-flex flex-column">
+        <h1 style="color: red;">{{ msg }}</h1>
+        <div class="flex-grow-1">
+            <form method="POST" action="/updateItem/{{ _id }}" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="Bestseller">bestseller:</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="Bestseller" id="Bestseller" value="{{Bestseller}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <label for="Title">Title:</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="textarea" name="Title" id="Title" value="{{Title}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <label for="Price">Price:</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" id="Price" name ="Price" value="{{Price}}">
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-3">
+                        <label for="On_Hand">Quantity On Hand:</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" id="On_Hand" name ="On_Hand" value="{{On_Hand}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <label for="Category">Category:</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" id="Category" name ="Category" value="{{Category}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <label for="Desc">Description</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" id="Desc" name ="Desc" style="width: 500px; height: 25px" value="{{Desc}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h5>
+                            Rating
+                            <i class="fa fa-star" style="color:gold"></i>
+                            <i class="fa fa-star" style="color:gold"></i>
+                            <i class="fa fa-star" style="color:gold"></i>
+                            <i class="fa fa-star" style="color:gold"></i>
+                            <i class="fa fa-star" style="color:gold"></i>
+                        </h5>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-success float-right" role="button" value="Update">
+                </div>
+            </form>
+        <div>
+            {{!-- <a href="/add-to-cart/{{this._id}}" class="btn btn-success" role="button" value="">Add to Cart</a> --}}
+            <a href="/Clerk/Edit" class="mr-3 btn btn-secondary float-right" role="button" value="">Go Back</a>
+        </div>
+    </div>
+</div>

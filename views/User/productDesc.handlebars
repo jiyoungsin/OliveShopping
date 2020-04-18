@@ -1,0 +1,29 @@
+<div class="row bg-light">
+    <div class="col-4 p-5">
+        {{!-- <img class="w-100 img-rounded" src="https://picsum.photos/200/300" alt="Desired Product" style="width:200px;height:300px"> --}}
+        <img class="w-100 img-rounded" src="../uploads/{{ image }}" alt="Desired Product" style="width:200px;height:300px">
+    </div>
+    <div class="col-8 p-5 d-flex flex-column">
+        <div class="flex-grow-1">
+            <h3>{{ title }}</h3>
+            <p>
+                {{ desc }} Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Facilis at provident non quasi magnam quibusdam, mollitia
+                rem explicabo voluptatibus eius incidunt architecto assumenda 
+                voluptate quos cum quaerat exercitationem aliquam saepe!
+            </p>
+            <h5>
+                Rating
+                <i class="fa fa-star" style="color:gold"></i>
+                <i class="fa fa-star" style="color:gold"></i>
+                <i class="fa fa-star" style="color:gold"></i>
+                <i class="fa fa-star" style="color:gold"></i>
+                <i class="fa fa-star" style="color:gold"></i>
+            </h5>
+        </div>
+        <div>
+            <a href="/add-to-cart/{{_id}}" class="btn btn-success float-right" role="button" value="">Add to Cart</a>
+            <a href="/User/userDashboard" class="mr-3 btn btn-secondary float-right" role="button" value="">Go Back</a>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,7 @@
-<div class="container row bg-light">
+<div class="row bg-light p-3">
+    <h1>{{ Greetings }}</h1>
+</div>
+<div class="row bg-light">
     <div class="container col-md-3 border border-light mb-5">
         <div class="mt-5 container d-flex justify-content-center">
             <img class="img-fluid rounded-circle" src="../uploads/{{user.ProfilePic}}" alt="Display picture">
@@ -45,7 +48,15 @@
             </div>
         </div>
     </div>
-    <div class="flex-grow-1 mt-5 mb-5 col-md-3 d-flex justify-content-center">
+    <div class="d-flex flex-column flex-grow-1 mt-5 mb-5 col-md-3 d-flex justify-content-center">
+        Ad Space
         <img class="img-fluid" src="images/cocacola.jpg" alt="ads">
+    </div>
+</div>
+<div class="row bg-light d-flex justify-content-end p-3">
+    <div class="justify-content-between">
+        <div class="btn btn-success">
+            <a class="nav-link" style="color:black" href="/User/logout">Logout<span class="sr-only">(current)</span></a>
+        </div>
     </div>
 </div>

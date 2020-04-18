@@ -1,29 +1,39 @@
 {{# if products}}
     <div class="row bg-light d-flex flex-column p-5">
-        <h2 class="text-center">Shopping Cart</h2>
-        <div class="col-6 align-self-center">
-            <ul class="list-group">
-                {{#each products}}
-                    <li class="list-group-item d-flex">
-                        <img class="img-rounded" src="../uploads/{{this.item.ImagePath}}" alt="Desired Product" style="width:80px;height:100px">
-                        <div class="flex-grow-1 p-2">
-                            <span class="badge"> {{this.qty}} </span>
-                            <strong>{{this.item.Title}}</strong>
-                        </div>
-                        <p class="align-self-center p-2 label label-success">${{this.Price}}</p>
-                        <div class="align-self-center">
-                            <div class="btn-group">
-                                <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Reduce By 1</a></li>
-                                    <li><a href="#">Remove All</a></li>
-                                </ul>
+        <form method="POST" action="/SendConfirmationEmail" class="d-flex flex-column ">
+            <h2 class="text-center">Shopping Cart</h2>
+            <div class="col-6 align-self-center">
+                <ul class="list-group">
+                    {{#each products}}
+                        <li class="list-group-item d-flex">
+                            <img class="img-rounded" src="../uploads/{{this.item.ImagePath}}" alt="Desired Product" style="width:80px;height:100px">
+                            <div class="flex-grow-1 p-2">
+                                <span class="badge"> {{this.qty}} </span>
+                                <strong>{{this.item.Title}}</strong>
                             </div>
-                        </div>
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
+                            <p class="align-self-center p-2 label label-success">${{this.Price}}</p>
+                            <div class="align-self-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Action<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Reduce By 1</a></li>
+                                        <li><a href="#">Remove All</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="row justify-content-end mr-5">
+                <strong>Total: ${{totalCost}}</strong>
+            </div>
+            <hr>
+            <div class="row justify-content-end mr-5 pb-3">
+                <input type="submit" class="btn btn-success float-right" role="button" value="Checkout">
+            </div>
+            <input type="text" name="totalCost" id="totalCost" style="width:1px;height:1px;" value={{totalCost}}>
+        </form>
     </div>
 {{ else }}
     <div class="pt-5 pb-5">

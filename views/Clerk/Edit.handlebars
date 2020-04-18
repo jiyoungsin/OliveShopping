@@ -1,12 +1,12 @@
 <nav class="navbar navbar-light bg-light justify-content-around">
-    <a class="nav-item" style="color:black" href="/User/userDashboard">All<span class="sr-only">(current)</span></a>
+    <a class="nav-item" style="color:black" href="/Clerk/edit">All<span class="sr-only">(current)</span></a>
     <div class="dropdown">
         <button type="button" class="btn dropdown-toggle navbar-color-toggler-black" data-toggle="dropdown">
             Womens
         </button>
         <div class="dropdown-menu">
-            <a class="nav-link" style="color:black" href="/User/userDashboard/WSHIRTS">Shirts<span class="sr-only">(current)</span></a>
-            <a class="nav-link" style="color:black" href="/User/userDashboard/WPANTS">Pants<span class="sr-only">(current)</span></a>
+            <a class="nav-link" style="color:black" href="/Clerk/edit/WSHIRTS">Shirts<span class="sr-only">(current)</span></a>
+            <a class="nav-link" style="color:black" href="/Clerk/edit/WPANTS">Pants<span class="sr-only">(current)</span></a>
         </div>
     </div>
     <div class="dropdown mr-2 ml-2">
@@ -14,11 +14,11 @@
             Mens
         </button>
         <div class="dropdown-menu">
-            <a class="nav-link" style="color:black" href="/User/userDashboard/SHIRTS">Shirts<span class="sr-only">(current)</span></a>
-            <a class="nav-link" style="color:black" href="/User/userDashboard/PANTS">Pants<span class="sr-only">(current)</span></a>
+            <a class="nav-link" style="color:black" href="/Clerk/edit/SHIRTS">Shirts<span class="sr-only">(current)</span></a>
+            <a class="nav-link" style="color:black" href="/Clerk/edit/PANTS">Pants<span class="sr-only">(current)</span></a>
         </div>
     </div>
-    <a class="nav-item" style="color:black" href="/User/userDashboard/BESTSELLERS">BestSellers<span class="sr-only">(current)</span></a>
+    <a class="nav-item" style="color:black" href="/Clerk/edit/BESTSELLERS">BestSellers<span class="sr-only">(current)</span></a>
     <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -45,7 +45,7 @@
                     <div class="row justify-content-end">
                         <div class="justify-content-between">
                             <a href="/productDesc/{{this._id}}" class="btn btn-dark" role="button" value="">Details</a>
-                            <a href="/add-to-cart/{{this._id}}" class="btn btn-success" role="button" value="">Add to Cart</a>
+                            <a href="/edit/{{this._id}}" class="btn btn-success" role="button" value="">Edit</a>
                         </div>
                     </div>
                 </div>

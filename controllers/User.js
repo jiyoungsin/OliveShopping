@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const Users = require('../model/schema');
 const Product = require('../model/products');
+const isLoggedIn = require('../middleware/auth');
+
+
 const { check, validationResult } = require('express-validator');
 
 router.use(express.static("public"));
@@ -15,26 +18,16 @@ require("dotenv").config({path:'./config/keys.env'});
 // implemented but not used.
 router.get("/employeeLogin",(req,res)=> {
     res.render("User/employeeLogin",{
-        title: "Login",
-        pageHeader: "Login",
+        title: "EmpLogin",
+        pageHeader: "EmpLogin",
     });
-});
-// implemented but not used.
-router.post("/employeeLogin",[
-    check('email','Invalid Email').isLength({ min:1}),
-    check('password','Invaild Password').isLength({ min:1})
-  ],(req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.render("/User/employeeLogin",{ errors: errors.array() });
-    }
-    return res.render("/");
 });
 
 // ---------------- Log Out --------------------------
 // terminates the current session
 router.get("/logout",(req,res)=>{
     req.session.destroy();
+    res.locals.session.destroy();
     res.redirect("/Registration/login");
 });
 
@@ -42,30 +35,12 @@ router.get("/logout",(req,res)=>{
 router.get("/userDashboard",(req,res)=>{
     Product.find(function(err,docs){ 
         let rowNeeded = [];
-        let ItemsInRow = 3;
-        for(let i=0; i< docs.length; i += ItemsInRow){
-            rowNeeded.push(docs.slice(i, i + ItemsInRow)); 
-        }
-        res.render("User/userDashboard",{
-            title: "Home",
-            pageHeader: "Home",
-            cloths: rowNeeded,
-        });
-    });
-});
-
-// Route the user to the bestseller dashboard
-router.get("/bestSellerDashboard",(req,res)=>{
-    Product.find(function(err,docs){ 
-        let rowNeeded = [];
-        for( i=0; i< docs.length; i++){
-            if(docs[i].Bestseller){
-                rowNeeded.push(docs[i]);
-            }
+        for(let i=0; i< docs.length; i++){
+                rowNeeded.push(docs[i]); 
         }
         res.render("User/bestSellerDashboard",{
-            title: "Best Sellers",
-            pageHeader: "Best Sellers",
+            title: "Home",
+            pageHeader: "Home",
             cloths: rowNeeded,
         });
     });
@@ -76,11 +51,14 @@ router.get("/userDashboard/:productType",(req,res)=>{
     let prodType = req.params.productType;
     Product.find(function(err,docs){ 
         let rowNeeded = [];
-        let ItemsInRow = 3;
-        for(let i=0; i< docs.length; i++){
-            if(docs[i].Category === prodType){
-                rowNeeded.push(docs[i]); 
-            };
+        if(prodType === "BESTSELLERS" ){
+            for( i=0; i< docs.length; i++){
+                if(docs[i].Bestseller){ rowNeeded.push(docs[i]); }
+            } 
+        }else{
+            for(let i=0; i< docs.length; i++){
+                if(docs[i].Category === prodType){ rowNeeded.push(docs[i]);  };
+            }
         }
         res.render("User/bestSellerDashboard",{
             title: "Home",
@@ -89,8 +67,9 @@ router.get("/userDashboard/:productType",(req,res)=>{
         });
     });
 });
+
 // ---------------- Profile --------------------------
-router.get("/profile",(req,res)=>{
+router.get("/profile",isLoggedIn,(req,res)=>{
     Users.find(function(err,docs){ 
         let user = req.session.userInfo;
         x= docs[0];
@@ -103,15 +82,15 @@ router.get("/profile",(req,res)=>{
     });
 });
 
-router.post("/profile",(req,res)=>{
+// do i need this route?
+router.post("/profile", isLoggedIn, (req,res)=>{
     res.render("User/profile",{
         title: "Profile",
         pageHeader: "Profile",
     });
 });
 
-
-router.post("/UpdateProfile",(req,res)=> {
+router.post("/UpdateProfile",isLoggedIn,(req,res)=> {
     if(req.files.img.mimetype == "image/jpeg"){
         console.log(req.files.img.mimetype == "image/jpeg");
     }
@@ -124,7 +103,6 @@ router.post("/UpdateProfile",(req,res)=> {
     })
     .then(()=>{ console.log("UDATED PROFILE PICTURE"); })
     .catch(()=>{ console.log("DIDN'T UPDATE PROFILE PICTURE."); });
-    //if(jpgs,gifs,pngs)
     res.render("User/profile",{
         title: "Profile",
         pageHeader: "Profile",
@@ -132,5 +110,6 @@ router.post("/UpdateProfile",(req,res)=> {
         message: "UDATED PROFILE PICTURE",
     });
 });
+
 
 module.exports=router;
