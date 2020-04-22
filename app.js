@@ -70,10 +70,9 @@ app.use("/",(req,res)=>{
 
 
 // Port is using the env key or 3000.
-const PORT = process.env.PORT;
 // The express server is live on PORT(3000) or deployed on heroku 
 app.listen(8888,()=>{
-    console.log(`Web Server online at ${PORT}`);
+    console.log(`Web Server online at 8888`);
 });
 
 
