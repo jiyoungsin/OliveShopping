@@ -6,7 +6,7 @@ const session = require('express-session');
 const exphbs = require("express-handlebars");
 const fileUpload = require('express-fileupload');
 const MongoStore = require('connect-mongo')(session);
-
+ // created a few chagnessa here
 const seeder = require('./md-seed-config');
 
 //This loads all our environment variables from the keys.env
